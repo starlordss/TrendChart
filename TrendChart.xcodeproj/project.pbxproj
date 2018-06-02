@@ -13,6 +13,26 @@
 		013C92B020B1E1BD00442EA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 013C92AF20B1E1BD00442EA8 /* Assets.xcassets */; };
 		013C92B320B1E1BD00442EA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 013C92B120B1E1BD00442EA8 /* LaunchScreen.storyboard */; };
 		013C92B620B1E1BD00442EA8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 013C92B520B1E1BD00442EA8 /* main.m */; };
+		01E52AE320BEFB130021965F /* UIColor+SZTrendChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E52AE220BEFB120021965F /* UIColor+SZTrendChart.m */; };
+		01E52AE820BEFCBE0021965F /* SZTrendChartGlobalVariable.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E52AE720BEFCBE0021965F /* SZTrendChartGlobalVariable.m */; };
+		01E52AEC20BEFF130021965F /* SZTrendChartUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E52AEB20BEFF130021965F /* SZTrendChartUtil.m */; };
+		01E52AF520BF02C50021965F /* SZTrendChartGroupModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E52AF420BF02C50021965F /* SZTrendChartGroupModel.m */; };
+		01E52AF820BF02F10021965F /* SZKLineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E52AF720BF02F10021965F /* SZKLineModel.m */; };
+		01E52AFB20BF030F0021965F /* SZTrendChartPosition.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E52AFA20BF030F0021965F /* SZTrendChartPosition.m */; };
+		01E52AFE20BF03520021965F /* SZTrendChartVolumePosition.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E52AFD20BF03520021965F /* SZTrendChartVolumePosition.m */; };
+		01E52B0420BF0D6D0021965F /* SZTrendChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E52B0320BF0D6D0021965F /* SZTrendChartView.m */; };
+		01E52B0720BF0DD60021965F /* SZTrendChartTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E52B0620BF0DD60021965F /* SZTrendChartTitleView.m */; };
+		01E52B0A20BF11360021965F /* NSString+SZTrendChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E52B0920BF11360021965F /* NSString+SZTrendChart.m */; };
+		01E52B0D20BF11C30021965F /* SZTrendChartSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E52B0C20BF11C30021965F /* SZTrendChartSegmentView.m */; };
+		01E52B1020C03D4F0021965F /* SZTrendChartContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E52B0F20C03D4F0021965F /* SZTrendChartContext.m */; };
+		01E52B1820C048CF0021965F /* UIView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E52B1720C048CF0021965F /* UIView+Addition.m */; };
+		01E52B1E20C04C370021965F /* SZTrendChartTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E52B1D20C04C370021965F /* SZTrendChartTopView.m */; };
+		01E52B2120C2FAA30021965F /* SZAssistantBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E52B2020C2FAA30021965F /* SZAssistantBaseView.m */; };
+		01E52B2420C303940021965F /* SZVolumeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E52B2320C303940021965F /* SZVolumeView.m */; };
+		01E52B2720C308C80021965F /* UIBezierPath+curved.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E52B2620C308C70021965F /* UIBezierPath+curved.m */; };
+		01E52B2A20C308FF0021965F /* NSString+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E52B2820C308FF0021965F /* NSString+Common.m */; };
+		01E52B2D20C30C9C0021965F /* SZAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E52B2C20C30C9C0021965F /* SZAccessoryView.m */; };
+		5006F5286F6AD075EE7B42F9 /* libPods-TrendChart.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 31D5C10ABD3AACF6283E46F6 /* libPods-TrendChart.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +46,51 @@
 		013C92B220B1E1BD00442EA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		013C92B420B1E1BD00442EA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		013C92B520B1E1BD00442EA8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		01E52AE120BEFB120021965F /* UIColor+SZTrendChart.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+SZTrendChart.h"; sourceTree = "<group>"; };
+		01E52AE220BEFB120021965F /* UIColor+SZTrendChart.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+SZTrendChart.m"; sourceTree = "<group>"; };
+		01E52AE520BEFBA90021965F /* SZTrendChartConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTrendChartConstant.h; sourceTree = "<group>"; };
+		01E52AE620BEFCBE0021965F /* SZTrendChartGlobalVariable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTrendChartGlobalVariable.h; sourceTree = "<group>"; };
+		01E52AE720BEFCBE0021965F /* SZTrendChartGlobalVariable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTrendChartGlobalVariable.m; sourceTree = "<group>"; };
+		01E52AEA20BEFF130021965F /* SZTrendChartUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTrendChartUtil.h; sourceTree = "<group>"; };
+		01E52AEB20BEFF130021965F /* SZTrendChartUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTrendChartUtil.m; sourceTree = "<group>"; };
+		01E52AEE20BF00B20021965F /* 指标算法及释义.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "指标算法及释义.h"; sourceTree = "<group>"; };
+		01E52AF020BF01320021965F /* SZTrendChartMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTrendChartMacro.h; sourceTree = "<group>"; };
+		01E52AF320BF02C50021965F /* SZTrendChartGroupModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTrendChartGroupModel.h; sourceTree = "<group>"; };
+		01E52AF420BF02C50021965F /* SZTrendChartGroupModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTrendChartGroupModel.m; sourceTree = "<group>"; };
+		01E52AF620BF02F10021965F /* SZKLineModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZKLineModel.h; sourceTree = "<group>"; };
+		01E52AF720BF02F10021965F /* SZKLineModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZKLineModel.m; sourceTree = "<group>"; };
+		01E52AF920BF030F0021965F /* SZTrendChartPosition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTrendChartPosition.h; sourceTree = "<group>"; };
+		01E52AFA20BF030F0021965F /* SZTrendChartPosition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTrendChartPosition.m; sourceTree = "<group>"; };
+		01E52AFC20BF03520021965F /* SZTrendChartVolumePosition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTrendChartVolumePosition.h; sourceTree = "<group>"; };
+		01E52AFD20BF03520021965F /* SZTrendChartVolumePosition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTrendChartVolumePosition.m; sourceTree = "<group>"; };
+		01E52B0220BF0D6D0021965F /* SZTrendChartView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTrendChartView.h; sourceTree = "<group>"; };
+		01E52B0320BF0D6D0021965F /* SZTrendChartView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTrendChartView.m; sourceTree = "<group>"; };
+		01E52B0520BF0DD60021965F /* SZTrendChartTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTrendChartTitleView.h; sourceTree = "<group>"; };
+		01E52B0620BF0DD60021965F /* SZTrendChartTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTrendChartTitleView.m; sourceTree = "<group>"; };
+		01E52B0820BF11360021965F /* NSString+SZTrendChart.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+SZTrendChart.h"; sourceTree = "<group>"; };
+		01E52B0920BF11360021965F /* NSString+SZTrendChart.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+SZTrendChart.m"; sourceTree = "<group>"; };
+		01E52B0B20BF11C30021965F /* SZTrendChartSegmentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTrendChartSegmentView.h; sourceTree = "<group>"; };
+		01E52B0C20BF11C30021965F /* SZTrendChartSegmentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTrendChartSegmentView.m; sourceTree = "<group>"; };
+		01E52B0E20C03D4F0021965F /* SZTrendChartContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTrendChartContext.h; sourceTree = "<group>"; };
+		01E52B0F20C03D4F0021965F /* SZTrendChartContext.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTrendChartContext.m; sourceTree = "<group>"; };
+		01E52B1420C03E440021965F /* SZTrendChartHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTrendChartHeader.h; sourceTree = "<group>"; };
+		01E52B1620C048CF0021965F /* UIView+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Addition.h"; sourceTree = "<group>"; };
+		01E52B1720C048CF0021965F /* UIView+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Addition.m"; sourceTree = "<group>"; };
+		01E52B1C20C04C370021965F /* SZTrendChartTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTrendChartTopView.h; sourceTree = "<group>"; };
+		01E52B1D20C04C370021965F /* SZTrendChartTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTrendChartTopView.m; sourceTree = "<group>"; };
+		01E52B1F20C2FAA30021965F /* SZAssistantBaseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZAssistantBaseView.h; sourceTree = "<group>"; };
+		01E52B2020C2FAA30021965F /* SZAssistantBaseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZAssistantBaseView.m; sourceTree = "<group>"; };
+		01E52B2220C303940021965F /* SZVolumeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZVolumeView.h; sourceTree = "<group>"; };
+		01E52B2320C303940021965F /* SZVolumeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZVolumeView.m; sourceTree = "<group>"; };
+		01E52B2520C308C70021965F /* UIBezierPath+curved.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+curved.h"; sourceTree = "<group>"; };
+		01E52B2620C308C70021965F /* UIBezierPath+curved.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+curved.m"; sourceTree = "<group>"; };
+		01E52B2820C308FF0021965F /* NSString+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Common.m"; sourceTree = "<group>"; };
+		01E52B2920C308FF0021965F /* NSString+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Common.h"; sourceTree = "<group>"; };
+		01E52B2B20C30C9C0021965F /* SZAccessoryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZAccessoryView.h; sourceTree = "<group>"; };
+		01E52B2C20C30C9C0021965F /* SZAccessoryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZAccessoryView.m; sourceTree = "<group>"; };
+		31D5C10ABD3AACF6283E46F6 /* libPods-TrendChart.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TrendChart.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		66ACF33727A2141166561E9B /* Pods-TrendChart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrendChart.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrendChart/Pods-TrendChart.release.xcconfig"; sourceTree = "<group>"; };
+		B78AA107431491CAB4EC7ACA /* Pods-TrendChart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrendChart.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrendChart/Pods-TrendChart.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5006F5286F6AD075EE7B42F9 /* libPods-TrendChart.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +110,8 @@
 			children = (
 				013C92A520B1E1BB00442EA8 /* TrendChart */,
 				013C92A420B1E1BB00442EA8 /* Products */,
+				AEDDEC04C8E40A33F1BB9810 /* Pods */,
+				A5C28CB5071D1EF5B55E9F68 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +126,7 @@
 		013C92A520B1E1BB00442EA8 /* TrendChart */ = {
 			isa = PBXGroup;
 			children = (
+				013C92BC20B1E28D00442EA8 /* SZTrendChart */,
 				013C92A620B1E1BB00442EA8 /* AppDelegate.h */,
 				013C92A720B1E1BB00442EA8 /* AppDelegate.m */,
 				013C92A920B1E1BB00442EA8 /* ViewController.h */,
@@ -71,6 +140,144 @@
 			path = TrendChart;
 			sourceTree = "<group>";
 		};
+		013C92BC20B1E28D00442EA8 /* SZTrendChart */ = {
+			isa = PBXGroup;
+			children = (
+				01E52B1520C048B90021965F /* D */,
+				01E52AE920BEFE9C0021965F /* Utils */,
+				01E52ADF20BEFA470021965F /* Configuration */,
+				01E52AE020BEFA640021965F /* Chart */,
+				01E52B0E20C03D4F0021965F /* SZTrendChartContext.h */,
+				01E52B0F20C03D4F0021965F /* SZTrendChartContext.m */,
+			);
+			path = SZTrendChart;
+			sourceTree = "<group>";
+		};
+		01E52ADF20BEFA470021965F /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				01E52AE520BEFBA90021965F /* SZTrendChartConstant.h */,
+				01E52AE120BEFB120021965F /* UIColor+SZTrendChart.h */,
+				01E52AE220BEFB120021965F /* UIColor+SZTrendChart.m */,
+				01E52AE620BEFCBE0021965F /* SZTrendChartGlobalVariable.h */,
+				01E52AE720BEFCBE0021965F /* SZTrendChartGlobalVariable.m */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		01E52AE020BEFA640021965F /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				01E52AF220BF02870021965F /* View */,
+				01E52AF120BF027E0021965F /* Model */,
+			);
+			path = Chart;
+			sourceTree = "<group>";
+		};
+		01E52AE920BEFE9C0021965F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				01E52AF020BF01320021965F /* SZTrendChartMacro.h */,
+				01E52AEE20BF00B20021965F /* 指标算法及释义.h */,
+				01E52AEA20BEFF130021965F /* SZTrendChartUtil.h */,
+				01E52AEB20BEFF130021965F /* SZTrendChartUtil.m */,
+				01E52B0820BF11360021965F /* NSString+SZTrendChart.h */,
+				01E52B0920BF11360021965F /* NSString+SZTrendChart.m */,
+				01E52B1420C03E440021965F /* SZTrendChartHeader.h */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		01E52AF120BF027E0021965F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				01E52AF320BF02C50021965F /* SZTrendChartGroupModel.h */,
+				01E52AF420BF02C50021965F /* SZTrendChartGroupModel.m */,
+				01E52AF620BF02F10021965F /* SZKLineModel.h */,
+				01E52AF720BF02F10021965F /* SZKLineModel.m */,
+				01E52AF920BF030F0021965F /* SZTrendChartPosition.h */,
+				01E52AFA20BF030F0021965F /* SZTrendChartPosition.m */,
+				01E52AFC20BF03520021965F /* SZTrendChartVolumePosition.h */,
+				01E52AFD20BF03520021965F /* SZTrendChartVolumePosition.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		01E52AF220BF02870021965F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				01E52B0120BF0CEF0021965F /* Other */,
+				01E52B0020BF0CD50021965F /* Accessory */,
+				01E52AFF20BF0CCB0021965F /* KLine */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		01E52AFF20BF0CCB0021965F /* KLine */ = {
+			isa = PBXGroup;
+			children = (
+				01E52B0220BF0D6D0021965F /* SZTrendChartView.h */,
+				01E52B0320BF0D6D0021965F /* SZTrendChartView.m */,
+			);
+			path = KLine;
+			sourceTree = "<group>";
+		};
+		01E52B0020BF0CD50021965F /* Accessory */ = {
+			isa = PBXGroup;
+			children = (
+				01E52B1F20C2FAA30021965F /* SZAssistantBaseView.h */,
+				01E52B2020C2FAA30021965F /* SZAssistantBaseView.m */,
+				01E52B2220C303940021965F /* SZVolumeView.h */,
+				01E52B2320C303940021965F /* SZVolumeView.m */,
+				01E52B2B20C30C9C0021965F /* SZAccessoryView.h */,
+				01E52B2C20C30C9C0021965F /* SZAccessoryView.m */,
+			);
+			path = Accessory;
+			sourceTree = "<group>";
+		};
+		01E52B0120BF0CEF0021965F /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				01E52B0520BF0DD60021965F /* SZTrendChartTitleView.h */,
+				01E52B0620BF0DD60021965F /* SZTrendChartTitleView.m */,
+				01E52B0B20BF11C30021965F /* SZTrendChartSegmentView.h */,
+				01E52B0C20BF11C30021965F /* SZTrendChartSegmentView.m */,
+				01E52B1C20C04C370021965F /* SZTrendChartTopView.h */,
+				01E52B1D20C04C370021965F /* SZTrendChartTopView.m */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		01E52B1520C048B90021965F /* D */ = {
+			isa = PBXGroup;
+			children = (
+				01E52B2920C308FF0021965F /* NSString+Common.h */,
+				01E52B2820C308FF0021965F /* NSString+Common.m */,
+				01E52B2520C308C70021965F /* UIBezierPath+curved.h */,
+				01E52B2620C308C70021965F /* UIBezierPath+curved.m */,
+				01E52B1620C048CF0021965F /* UIView+Addition.h */,
+				01E52B1720C048CF0021965F /* UIView+Addition.m */,
+			);
+			path = D;
+			sourceTree = "<group>";
+		};
+		A5C28CB5071D1EF5B55E9F68 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				31D5C10ABD3AACF6283E46F6 /* libPods-TrendChart.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AEDDEC04C8E40A33F1BB9810 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B78AA107431491CAB4EC7ACA /* Pods-TrendChart.debug.xcconfig */,
+				66ACF33727A2141166561E9B /* Pods-TrendChart.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -78,9 +285,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 013C92B920B1E1BD00442EA8 /* Build configuration list for PBXNativeTarget "TrendChart" */;
 			buildPhases = (
+				AF9DEAA80B39F9F6A04A9786 /* [CP] Check Pods Manifest.lock */,
 				013C929F20B1E1BB00442EA8 /* Sources */,
 				013C92A020B1E1BB00442EA8 /* Frameworks */,
 				013C92A120B1E1BB00442EA8 /* Resources */,
+				399D8FEA7DE61429A9F0BE39 /* [CP] Embed Pods Frameworks */,
+				01B3414EC9282B82F3367F76 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -136,14 +346,84 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		01B3414EC9282B82F3367F76 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TrendChart/Pods-TrendChart-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		399D8FEA7DE61429A9F0BE39 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TrendChart/Pods-TrendChart-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AF9DEAA80B39F9F6A04A9786 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TrendChart-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		013C929F20B1E1BB00442EA8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				013C92AB20B1E1BB00442EA8 /* ViewController.m in Sources */,
+				01E52AE320BEFB130021965F /* UIColor+SZTrendChart.m in Sources */,
 				013C92B620B1E1BD00442EA8 /* main.m in Sources */,
+				01E52B2120C2FAA30021965F /* SZAssistantBaseView.m in Sources */,
+				01E52B2720C308C80021965F /* UIBezierPath+curved.m in Sources */,
+				01E52AF820BF02F10021965F /* SZKLineModel.m in Sources */,
+				01E52B0A20BF11360021965F /* NSString+SZTrendChart.m in Sources */,
+				01E52AE820BEFCBE0021965F /* SZTrendChartGlobalVariable.m in Sources */,
 				013C92A820B1E1BB00442EA8 /* AppDelegate.m in Sources */,
+				01E52AF520BF02C50021965F /* SZTrendChartGroupModel.m in Sources */,
+				01E52B0720BF0DD60021965F /* SZTrendChartTitleView.m in Sources */,
+				01E52B1E20C04C370021965F /* SZTrendChartTopView.m in Sources */,
+				01E52AEC20BEFF130021965F /* SZTrendChartUtil.m in Sources */,
+				01E52B0420BF0D6D0021965F /* SZTrendChartView.m in Sources */,
+				01E52B2D20C30C9C0021965F /* SZAccessoryView.m in Sources */,
+				01E52B2420C303940021965F /* SZVolumeView.m in Sources */,
+				01E52AFE20BF03520021965F /* SZTrendChartVolumePosition.m in Sources */,
+				01E52B2A20C308FF0021965F /* NSString+Common.m in Sources */,
+				01E52B1820C048CF0021965F /* UIView+Addition.m in Sources */,
+				01E52B0D20BF11C30021965F /* SZTrendChartSegmentView.m in Sources */,
+				01E52AFB20BF030F0021965F /* SZTrendChartPosition.m in Sources */,
+				01E52B1020C03D4F0021965F /* SZTrendChartContext.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +561,7 @@
 		};
 		013C92BA20B1E1BD00442EA8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B78AA107431491CAB4EC7ACA /* Pods-TrendChart.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -297,6 +578,7 @@
 		};
 		013C92BB20B1E1BD00442EA8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 66ACF33727A2141166561E9B /* Pods-TrendChart.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -19,7 +19,7 @@
             _RSV_9 = 100;
         }
         else {
-            _RSV_9 = (self.closingPrice - self.minPriceOfNineClock) * 100 / (self.maxPriceOfNineClock - self.minPriceOfNineClock);
+            _RSV_9 = (self.Close - self.minPriceOfNineClock) * 100 / (self.maxPriceOfNineClock - self.minPriceOfNineClock);
         }
     }
     return _RSV_9;
@@ -68,7 +68,7 @@
 
 - (CGFloat)Volume_EMA7 {
     if(!_Volume_EMA7) {
-        _Volume_EMA7 = (self.volume + 3 * self.previousKlineModel.Volume_EMA7)/4;
+        _Volume_EMA7 = (self.Volume + 3 * self.previousKlineModel.Volume_EMA7)/4;
     }
     return _Volume_EMA7;
 }
@@ -76,28 +76,28 @@
 //// EMA（N）=2/（N+1）*（C-昨日EMA）+昨日EMA；
 - (CGFloat)EMA7 {
     if(!_EMA7) {
-        _EMA7 = (self.closingPrice + 3 * self.previousKlineModel.EMA7)/4;
+        _EMA7 = (self.Close + 3 * self.previousKlineModel.EMA7)/4;
     }
     return _EMA7;
 }
 
 - (CGFloat)EMA30 {
     if(!_EMA30) {
-        _EMA30 = (2 * self.closingPrice + 29 * self.previousKlineModel.EMA30)/31;
+        _EMA30 = (2 * self.Close + 29 * self.previousKlineModel.EMA30)/31;
     }
     return _EMA30;
 }
 
 - (CGFloat)EMA12 {
     if(!_EMA12) {
-        _EMA12 = (2 * self.closingPrice + 11 * self.previousKlineModel.EMA12)/13;
+        _EMA12 = (2 * self.Close + 11 * self.previousKlineModel.EMA12)/13;
     }
     return _EMA12;
 }
 
 - (CGFloat)EMA26 {
     if (!_EMA26) {
-        _EMA26 = (2 * self.closingPrice + 25 * self.previousKlineModel.EMA26)/27;
+        _EMA26 = (2 * self.Close + 25 * self.previousKlineModel.EMA26)/27;
     }
     return _EMA26;
 }
@@ -123,7 +123,7 @@
 
 - (CGFloat)Volume_EMA30 {
     if(!_Volume_EMA30) {
-        _Volume_EMA30 = (2 * self.volume + 29 * self.previousKlineModel.Volume_EMA30)/31;
+        _Volume_EMA30 = (2 * self.Volume + 29 * self.previousKlineModel.Volume_EMA30)/31;
     }
     return _Volume_EMA30;
 }
@@ -158,14 +158,14 @@
 
 - (CGFloat)sumOfLastClose {
     if(!_sumOfLastClose) {
-        _sumOfLastClose = self.previousKlineModel.sumOfLastClose + self.closingPrice;
+        _sumOfLastClose = self.previousKlineModel.sumOfLastClose + self.Close;
     }
     return _sumOfLastClose;
 }
 
 - (CGFloat)sumOfLastVolume {
     if(!_sumOfLastVolume) {
-        _sumOfLastVolume = self.previousKlineModel.sumOfLastVolume + self.volume;
+        _sumOfLastVolume = self.previousKlineModel.sumOfLastVolume + self.Volume;
     }
     return _sumOfLastVolume;
 }
@@ -213,7 +213,7 @@
 
 - (CGFloat)closeDiff {
     if (!_closeDiff) {
-        _closeDiff = self.closingPrice - self.previousKlineModel.closingPrice;
+        _closeDiff = self.Close - self.previousKlineModel.Close;
     }
     return _closeDiff;
 }
@@ -312,7 +312,7 @@
     if (!_BOLL_SUBMD) {
         NSInteger index = [self.parentGroupModel.models indexOfObject:self];
         if (index >= 20) {
-            _BOLL_SUBMD = (self.closingPrice - self.MA20) * ( self.closingPrice - self.MA20);
+            _BOLL_SUBMD = (self.Close - self.MA20) * ( self.Close - self.MA20);
         }
     }
     return _BOLL_SUBMD;
@@ -326,18 +326,21 @@
 }
 
 - (void)initWithValues:(NSArray *)arr {
+    // MARK:- fix
     NSAssert(arr.count == 6, @"数组长度不足");
     if (self)  {
-        NSTimeInterval timestamp = ([arr[0] integerValue]) / 1000;
-        _date = [self generateFormatTimeViaStamp:timestamp isFull:false];
-        _fullDate = [self generateFormatTimeViaStamp:timestamp isFull:true];
-        _openingPrice = [arr[1] floatValue];
-        _highestPrice = [arr[2] floatValue];
-        _lowestPrice = [arr[3] floatValue];
-        _closingPrice = [arr[4] floatValue];
-        _volume = [arr[5] floatValue];
-        self.sumOfLastClose = _closingPrice + self.previousKlineModel.sumOfLastClose;
-        self.sumOfLastVolume = _volume + self.previousKlineModel.sumOfLastVolume;
+//        NSTimeInterval timestamp = ([arr[0] integerValue]) / 1000;
+//        _date = [self generateFormatTimeViaStamp:timestamp isFull:false];
+//        _fullDate = [self generateFormatTimeViaStamp:timestamp isFull:true];
+        _Time = arr[0];
+        _date = _Time;
+        _Open = [arr[1] floatValue];
+        _High = [arr[2] floatValue];
+        _Low = [arr[3] floatValue];
+        _Close = [arr[4] floatValue];
+        _Volume = [arr[5] floatValue];
+        self.sumOfLastClose = _Close + self.previousKlineModel.sumOfLastClose;
+        self.sumOfLastVolume = _Volume + self.previousKlineModel.sumOfLastVolume;
     }
 }
 
@@ -364,12 +367,12 @@
     //    _MA12 = _Close;
     //    _MA26 = _Close;
     //    _MA30 = _Close;
-    _EMA7 = _closingPrice;
-    _EMA12 = _closingPrice;
-    _EMA26 = _closingPrice;
-    _EMA30 = _closingPrice;
-    _minPriceOfNineClock = _lowestPrice;
-    _maxPriceOfNineClock = _highestPrice;
+    _EMA7 = _Close;
+    _EMA12 = _Close;
+    _EMA26 = _Close;
+    _EMA30 = _Close;
+    _minPriceOfNineClock = _Low;
+    _maxPriceOfNineClock = _High;
     [self DIF];
     [self DEA];
     [self MACD];
@@ -427,11 +430,11 @@
 - (CGFloat)calcMinPriceOfNineClock {
     NSArray <SZKLineModel *> *models = self.parentGroupModel.models;
     NSInteger index = [self.parentGroupModel.models indexOfObject:self];
-    CGFloat minValue = models[index].lowestPrice;
+    CGFloat minValue = models[index].Low;
     NSInteger startIndex = index < 9 ? 0 : (index - ( 9 - 1));
     for (NSInteger i = startIndex; i < index; i ++) {
-        if (models[i].lowestPrice < minValue) {
-            minValue = models[i].lowestPrice;
+        if (models[i].Low < minValue) {
+            minValue = models[i].Low;
         }
     }
     return minValue;
@@ -440,11 +443,11 @@
 - (CGFloat)calcMaxPriceOfNineClock {
     NSArray <SZKLineModel *> *models = self.parentGroupModel.models;
     NSInteger index = [self.parentGroupModel.models indexOfObject:self];
-    CGFloat maxValue = models[index].highestPrice;
+    CGFloat maxValue = models[index].High;
     NSInteger startIndex = index < 9 ? 0 : (index - ( 9 - 1));
     for (NSInteger i = startIndex; i < index; i ++) {
-        if (models[i].highestPrice > maxValue) {
-            maxValue = models[i].highestPrice;
+        if (models[i].High > maxValue) {
+            maxValue = models[i].High;
         }
     }
     return maxValue;
@@ -491,6 +494,24 @@
         MAValue = 0;
     }
     return MAValue;
+}
+
+- (void) initWithDict:(NSDictionary *)dict
+{
+    
+    if (self)
+    {
+        _Time = dict[@"Time"];
+        _Open = [dict[@"Open"] doubleValue];
+        _High = [dict[@"High"] doubleValue];
+        _Low = [dict[@"Low"] doubleValue];
+        _Close = [dict[@"Close"] doubleValue];
+        _Volume = [dict[@"Volume"] doubleValue];
+        self.sumOfLastClose = _Close + self.previousKlineModel.sumOfLastClose;
+        self.sumOfLastVolume = _Volume + self.previousKlineModel.sumOfLastVolume;
+        //        NSLog(@"%@======%@======%@------%@",_Close,self.MA7,self.MA30,_SumOfLastClose);
+        
+    }
 }
 
 @end

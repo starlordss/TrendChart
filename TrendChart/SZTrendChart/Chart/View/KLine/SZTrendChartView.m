@@ -212,7 +212,7 @@ static const CGFloat kAccessoryMargin = 6.f; //!< 两个副图的间距
 }
 
 - (void)drawSetting {
-    NSString *priceTitle = [NSString stringWithFormat:@"%.2f", self.highestItem.highestPrice];
+    NSString *priceTitle = [NSString stringWithFormat:@"%.2f", self.highestItem.High];
     CGSize size = [priceTitle stringSizeWithFont:YAxisTitleFont];
     
     _stockCtx.rightMargin = size.width + 4.f;
@@ -243,17 +243,17 @@ static const CGFloat kAccessoryMargin = 6.f; //!< 两个副图的间距
                         mas:(NSArray *)mas
                       isNew:(BOOL)isNew {
     SZKLineModel *item= [SZKLineModel new];
-    item.openingPrice = open;
-    item.closingPrice = close;
-    item.highestPrice = high;
-    item.lowestPrice = low;
+    item.Open = open;
+    item.Close = close;
+    item.High = high;
+    item.Low = low;
     item.date = date;
     
     if (isNew) {
         self.dataSource = self.dataSource.count ? [self.dataSource arrayByAddingObject:item] : @[item];
     }
     else {
-        if (item.closingPrice == self.dataSource.lastObject.closingPrice) {
+        if (item.Close == self.dataSource.lastObject.Close) {
             return;
         }
         NSMutableArray *copy = [self.dataSource mutableCopy];
@@ -389,7 +389,7 @@ static const CGFloat kAccessoryMargin = 6.f; //!< 两个副图的间距
     self.horizontalCrossLine.us_top = point.y;
     
     self.KLineTitleView.hidden = false;
-    [self.KLineTitleView updateWithHigh:item.highestPrice open:item.openingPrice close:item.closingPrice low:item.lowestPrice];
+    [self.KLineTitleView updateWithHigh:item.High open:item.Open close:item.Close low:item.Low];
     
     //时间，价额
     self.priceLabel.hidden = NO;
@@ -403,7 +403,7 @@ static const CGFloat kAccessoryMargin = 6.f; //!< 两个副图的间距
                                        priceLabelHeight);
     [self bringSubviewToFront:self.priceLabel];
     
-    NSString *date = item.fullDate;
+    NSString *date = item.Time;
     self.timeLabel.text = date;
     self.timeLabel.hidden = !date.length;
     [self bringSubviewToFront:self.timeLabel];
@@ -562,8 +562,8 @@ static const CGFloat kAccessoryMargin = 6.f; //!< 两个副图的间距
     for (SZKLineModel *item in items) {
         self.xAxisMapper[@(xAxis + _stockCtx.KLineWidth)] = @([self.dataSource indexOfObject:item]);
         //通过开盘价、收盘价判断颜色
-        CGFloat open = item.openingPrice;
-        CGFloat close = item.closingPrice;
+        CGFloat open = item.Open;
+        CGFloat close = item.Close;
         UIColor *fillColor = open > close ? _stockCtx.positiveLineColor : _stockCtx.negativeLineColor;
         CGContextSetFillColorWithColor(context, fillColor.CGColor);
         
@@ -578,8 +578,8 @@ static const CGFloat kAccessoryMargin = 6.f; //!< 两个副图的间距
         CGContextFillPath(context);
         
         //上、下影线
-        CGFloat highYAxis = MaxYAxis - kChartVerticalMargin - (item.highestPrice - self.lowestPriceOfAll)/pricePerHeightUnit;
-        CGFloat lowYAxis = MaxYAxis - kChartVerticalMargin - (item.lowestPrice - self.lowestPriceOfAll)/pricePerHeightUnit;
+        CGFloat highYAxis = MaxYAxis - kChartVerticalMargin - (item.High - self.lowestPriceOfAll)/pricePerHeightUnit;
+        CGFloat lowYAxis = MaxYAxis - kChartVerticalMargin - (item.Low - self.lowestPriceOfAll)/pricePerHeightUnit;
         CGPoint highPoint = CGPointMake(xAxis + _stockCtx.KLineWidth/2.0 + _stockCtx.leftMargin, highYAxis);
         CGPoint lowPoint = CGPointMake(xAxis + _stockCtx.KLineWidth/2.0 + _stockCtx.leftMargin, lowYAxis);
         CGContextSetStrokeColorWithColor(context, fillColor.CGColor);
@@ -590,10 +590,10 @@ static const CGFloat kAccessoryMargin = 6.f; //!< 两个副图的间距
         CGContextAddLineToPoint(context, lowPoint.x, lowPoint.y);   //终点坐标
         CGContextStrokePath(context);
         
-        if (item.highestPrice == self.highestPriceOfAll) {
+        if (item.High == self.highestPriceOfAll) {
             maxPoint = highPoint;
         }
-        if (item.lowestPrice == self.lowestPriceOfAll) {
+        if (item.Low == self.lowestPriceOfAll) {
             minPoint = lowPoint;
         }
         xAxis += _stockCtx.KLineWidth + _stockCtx.KLinePadding;
@@ -749,8 +749,8 @@ static const CGFloat kAccessoryMargin = 6.f; //!< 两个副图的间距
     NSArray *drawContext = self.autoFit ? subChartValues : self.dataSource;
     for (int i = 0; i < drawContext.count; i++) {
         SZKLineModel *model = drawContext[i];
-        self.highestPriceOfAll = MAX(model.highestPrice, self.highestPriceOfAll);
-        self.lowestPriceOfAll = MIN(model.lowestPrice, self.lowestPriceOfAll);
+        self.highestPriceOfAll = MAX(model.High, self.highestPriceOfAll);
+        self.lowestPriceOfAll = MIN(model.Low, self.lowestPriceOfAll);
     }
     // 如果是BOLL，要重置最大最小值
     if (_mainChartType == SZMainChartTypeBOLL) {
@@ -929,8 +929,8 @@ static const CGFloat kAccessoryMargin = 6.f; //!< 两个副图的间距
     
     CGFloat maxHigh = -MAXFLOAT;
     for (SZKLineModel *item in self.dataSource) {
-        if (item.highestPrice > maxHigh) {
-            maxHigh = item.highestPrice;
+        if (item.High > maxHigh) {
+            maxHigh = item.High;
             self.highestItem = item;
         }
     }

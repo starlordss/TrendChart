@@ -305,7 +305,7 @@ static const CGFloat kVerticalMargin = 12.f;
         CGContextSetFillColorWithColor(context, fillColor.CGColor);
         
         CGRect pathRect = CGRectZero;
-        CGFloat centerY = self.frame.size.height + _lowestValue/unitValue - kVerticalMargin;
+        CGFloat centerY = self.frame.size.height + self.lowestValue/unitValue - kVerticalMargin;
         
         CGFloat itemHeight = ABS(model.MACD/unitValue);
         if (model.MACD > 0) {

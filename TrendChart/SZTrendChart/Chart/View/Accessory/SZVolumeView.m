@@ -54,7 +54,7 @@ static const CGFloat kVerticalMargin = 12.f;
 
 - (void)showTitleView:(SZKLineModel *)model {
     [super showTitleView:model];
-    [self.titleView updateWithVolume:model.volume MA5:model.MA7 MA10:model.MA20];
+    [self.titleView updateWithVolume:model.Volume MA5:model.MA7 MA10:model.MA20];
 }
 
 /**
@@ -134,12 +134,12 @@ static const CGFloat kVerticalMargin = 12.f;
     NSArray *subChartValues = [self.data subarrayWithRange:NSMakeRange(self.startDrawIndex, self.numberOfDrawCount)];
     NSArray *volums = self.autoFit ? subChartValues : self.data;
     for (SZKLineModel *item in volums) {
-        if (self.maxValue < item.volume) {
-            self.maxValue = item.volume;
+        if (self.maxValue < item.Volume) {
+            self.maxValue = item.Volume;
         }
         
-        if (self.minValue > item.volume) {
-            self.minValue = item.volume;
+        if (self.minValue > item.Volume) {
+            self.minValue = item.Volume;
         }
     }
 }
@@ -172,12 +172,12 @@ static const CGFloat kVerticalMargin = 12.f;
     
     NSArray *contentValues = [self.data subarrayWithRange:NSMakeRange(self.startDrawIndex, self.numberOfDrawCount)];
     for (SZKLineModel *item in contentValues) {
-        CGFloat open = item.openingPrice;
-        CGFloat close = item.closingPrice;
+        CGFloat open = item.Open;
+        CGFloat close = item.Close;
         UIColor *fillColor = open > close ? _stockCtx.positiveLineColor : _stockCtx.negativeLineColor;
         CGContextSetFillColorWithColor(context, fillColor.CGColor);
         
-        CGFloat height = item.volume/volumePerUnit ?: 1.f;
+        CGFloat height = item.Volume/volumePerUnit ?: 1.f;
         CGRect pathRect = CGRectMake(xAxis, boxOriginY + boxHeight - height, _stockCtx.KLineWidth, height - AxisLineWidth);
         CGContextAddRect(context, pathRect);
         CGContextFillPath(context);

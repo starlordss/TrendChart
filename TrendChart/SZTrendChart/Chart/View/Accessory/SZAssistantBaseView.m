@@ -36,7 +36,7 @@
 
 - (void)showTitleView:(SZKLineModel *)model {
     self.titleView.hidden = false;
-    [self.titleView updateWithVolume:model.volume MA5:model.MA7 MA10:model.MA20];
+    [self.titleView updateWithVolume:model.Volume MA5:model.MA7 MA10:model.MA20];
 }
 
 - (void)hideTitleView {

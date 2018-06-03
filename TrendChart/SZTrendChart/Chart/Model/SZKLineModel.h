@@ -27,12 +27,12 @@ typedef NS_ENUM(NSInteger, SZTrendChartCoinType) {
 @property (nonatomic, assign) CGFloat sumOfLastClose; //!< 该Model及其之前所有收盘价之和
 @property (nonatomic, assign) CGFloat sumOfLastVolume; //!< 该Model及其之前所有成交量之和
 @property (nonatomic, copy) NSString *date; //!< 日期
-@property (nonatomic, copy) NSString *fullDate; //!< 含有年月日的时间
-@property (nonatomic, assign) CGFloat openingPrice; //!< 开盘价
-@property (nonatomic, assign) CGFloat closingPrice; //!< 收盘价
-@property (nonatomic, assign) CGFloat highestPrice; //!< 最高价
-@property (nonatomic, assign) CGFloat lowestPrice; //!< 最低价
-@property (nonatomic, assign) CGFloat volume; //!< 成交量
+@property (nonatomic, copy) NSString *Time; //!< 含有年月日的时间
+@property (nonatomic, assign) CGFloat Open; //!< 开盘价
+@property (nonatomic, assign) CGFloat Close; //!< 收盘价
+@property (nonatomic, assign) CGFloat High; //!< 最高价
+@property (nonatomic, assign) CGFloat Low; //!< 最低价
+@property (nonatomic, assign) CGFloat Volume; //!< 成交量
 @property (nonatomic, assign) BOOL isFirstTradeDate; //!< 是否是某个月的第一个交易日
 
 #pragma 内部自动初始化
@@ -124,13 +124,15 @@ typedef NS_ENUM(NSInteger, SZTrendChartCoinType) {
 
 
 //初始化Model
-- (void)initWithValues:(NSArray *)arr;
+//- (void)initWithValues:(NSArray *)arr;
 
 //初始化第一条数据
 - (void)initFirstModel;
 
 //初始化其他数据
 - (void)initData ;
+
+- (void) initWithDict:(NSDictionary *)dict;
 
 
 @end

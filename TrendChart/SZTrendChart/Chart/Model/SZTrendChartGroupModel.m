@@ -13,18 +13,23 @@
 
 + (instancetype)groupModelWithDataSource:(NSArray *)dataSource {
     NSAssert([dataSource isKindOfClass:[NSArray class]], @"arr不是一个数组");
+
     
-    SZTrendChartGroupModel  *groupModel = [SZTrendChartGroupModel new];
+    SZTrendChartGroupModel *groupModel = [SZTrendChartGroupModel new];
     NSMutableArray *mutableArr = @[].mutableCopy;
-    SZKLineModel *preModel = [[SZKLineModel alloc] init];
+    __block SZKLineModel *preModel = [[SZKLineModel alloc]init];
     
     //设置数据
-    for (NSArray *values in dataSource) {
+    for (NSDictionary *dict in dataSource)
+    {
         SZKLineModel *model = [SZKLineModel new];
         model.previousKlineModel = preModel;
-        [model initWithValues:values];
-        model.parentGroupModel = groupModel;
+        //        [model initWithArray:valueArr];
+        [model initWithDict:dict];
+        model.ParentGroupModel = groupModel;
+        
         [mutableArr addObject:model];
+        
         preModel = model;
     }
     
@@ -38,6 +43,7 @@
     [mutableArr enumerateObjectsUsingBlock:^(SZKLineModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
         [model initData];
     }];
+    
     
     return groupModel;
 }

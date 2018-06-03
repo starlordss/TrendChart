@@ -29,7 +29,7 @@
 
 - (void)handleTap:(UITapGestureRecognizer *)tapGesture {
     CGPoint touchPoint = [tapGesture locationInView:self];
-    [self.baseChartView showTipBoardWithOuterViewTouchPoint:touchPoint];
+    [self.trendChartView showTipBoardWithOuterViewTouchPoint:touchPoint];
     
     
 }

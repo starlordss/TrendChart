@@ -30,10 +30,10 @@
 
 #endif
 
-#define KLineColor_Green  HexRGB(0x26e27e)
-#define KLineColor_Red    HexRGB(0xcb292e)
+#define KLineColor_Green  HexRGB(0x08BD85)
+#define KLineColor_Red    HexRGB(0xE47045)
 #define GlobalColor_Blue  HexRGB(0x2187c9)
-#define GlobalBGColor_Dark  HexRGB(0x292c34)
+#define GlobalBGColor_Blue  HexRGB(0x131F2F)
 
 
 

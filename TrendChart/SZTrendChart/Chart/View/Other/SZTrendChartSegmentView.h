@@ -18,8 +18,8 @@ extern const CGFloat SZSegmentTotalHeight;
 
 @optional
 
-- (void)stockSegmentView:(SZTrendChartSegmentView *)segmentView didSelectModel:(SZSegmentSelectedModel *)model;
-- (void)stockSegmentView:(SZTrendChartSegmentView *)segmentView showPopupView:(BOOL)showPopupView;
+- (void)segmentView:(SZTrendChartSegmentView *)segmentView didSelectModel:(SZSegmentSelectedModel *)model;
+- (void)segmentView:(SZTrendChartSegmentView *)segmentView showPopupView:(BOOL)showPopupView;
 
 @end
 

@@ -26,7 +26,7 @@
         model.previousKlineModel = preModel;
         //        [model initWithArray:valueArr];
         [model initWithDict:dict];
-        model.ParentGroupModel = groupModel;
+        model.parentGroupModel = groupModel;
         
         [mutableArr addObject:model];
         

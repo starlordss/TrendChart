@@ -24,7 +24,7 @@
 #pragma mark 所有图表的背景颜色
 +(UIColor *)backgroundColor
 {
-    return [UIColor colorWithRGBHex:0x181c20];
+    return [UIColor colorWithRGBHex:0x131F2F];
 }
 
 #pragma mark 辅助背景色
@@ -36,13 +36,13 @@
 #pragma mark 涨的颜色
 +(UIColor *)increaseColor
 {
-    return [UIColor colorWithRGBHex:0xff5353];
+    return [UIColor colorWithRGBHex:0x0ABD86];
 }
 
 #pragma mark 跌的颜色
 +(UIColor *)decreaseColor
 {
-    return [UIColor colorWithRGBHex:0x00b07c];
+    return [UIColor colorWithRGBHex:0xE36F4A];
 }
 
 #pragma mark 主文字颜色

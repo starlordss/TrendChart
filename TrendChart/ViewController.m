@@ -37,12 +37,12 @@
 
 - (void)initData {
     _groupModelDict = [NSMutableDictionary dictionary];
-    _typeStr = @"30min";
+    _typeStr = @"5M";
 }
 
 - (void)setupNav {
     self.title = @"炒币网";
-    self.view.backgroundColor = GlobalBGColor_Dark;
+    self.view.backgroundColor = GlobalBGColor_Blue;
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"旋转" style:UIBarButtonItemStyleDone target:self action:@selector(rotateScreen:)];
     [rightItem setTintColor:[UIColor whiteColor]];
     self.navigationItem.rightBarButtonItem = rightItem;
@@ -68,19 +68,16 @@
     
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     param[@"Cycle"] = self.typeStr.length ? self.typeStr : @"5M";
-    param[@"Contract"] = @"AE_USD";
-
-    // afn
+    param[@"Contract"] = @"BTC_USD";
     AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
-//    mgr.requestSerializer=[AFJSONRequestSerializer serializer];
-//    mgr.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html",@"text/css",@"text/plain", nil];
-    
     [mgr GET:@"https://www.chaobi.com:6443/quotation/kline" parameters:param progress:^(NSProgress * _Nonnull downloadProgress) {
     
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"-----%@",responseObject);
         if ([responseObject[@"status"] boolValue]) {
-            SZTrendChartGroupModel *groupModel = [SZTrendChartGroupModel groupModelWithDataSource:responseObject[@"data"]];
+            NSArray *datas = responseObject[@"data"];
+            datas = [[datas reverseObjectEnumerator] allObjects];
+            SZTrendChartGroupModel *groupModel = [SZTrendChartGroupModel groupModelWithDataSource:datas];
             [self.trendChartView drawChartWithDataSource:groupModel.models];
             self.groupModelDict[self.typeStr] = groupModel;
         }
@@ -89,31 +86,29 @@
     }];
 }
 
-#pragma mark - <MCStockChartViewDelegate>
-
-- (void)stockChartView:(SZTrendChartView *)trendChartView didSelectTargetTime:(SZTargetTimeType)targetTimeType {
+#pragma mark - <SZTrendChartViewDelegate>
+- (void)trendChartView:(SZTrendChartView *)trendChartView didSelectTargetTime:(SZTargetTimeType)targetTimeType {
     if (targetTimeType == SZTargetTimeTypeTiming) {
         DLog(@"点击时间轴 == SZTargetTimeTypeTiming");
-        self.typeStr = @"1min";
+        self.typeStr = @"1M";
     }
     else if (targetTimeType == SZTargetTimeTypeMin_5) {
         DLog(@"点击时间轴 == SZTargetTimeTypeMin_5");
-        self.typeStr = @"5min";
+        self.typeStr = @"5M";
     }
     else if (targetTimeType == SZTargetTimeTypeMin_30) {
         DLog(@"点击时间轴 == SZTargetTimeTypeMin_30");
-        self.typeStr = @"30min";
+        self.typeStr = @"30M";
     }
     else if (targetTimeType == SZTargetTimeTypeMin_60) {
         DLog(@"点击时间轴 == SZTargetTimeTypeMin_60");
-        self.typeStr = @"1hour";
+        self.typeStr = @"1H";
     }
     else if (targetTimeType == SZTargetTimeTypeDay) {
         DLog(@"点击时间轴 == SZTargetTimeTypeDay");
-        self.typeStr = @"1day";
+        self.typeStr = @"1D";
     }
     [self requestData];
 }
-
 
 @end

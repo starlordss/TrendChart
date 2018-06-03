@@ -203,7 +203,7 @@ static const CGFloat kVerticalMargin = 12.f;
                                    rect.size.height);
     CGContextStrokeRect(context, strokeRect);
     
-    [self drawDashLineInContext:context movePoint:CGPointMake(_stockCtx.leftMargin + 1.25, rect.size.height/2.0)
+    [self drawLineInContext:context movePoint:CGPointMake(_stockCtx.leftMargin + 1.25, rect.size.height/2.0)
                         toPoint:CGPointMake(rect.size.width  - _stockCtx.rightMargin - 0.8, rect.size.height/2.0)];
     
     CGContextSetLineDash(context, 0, 0, 0);
@@ -227,6 +227,17 @@ static const CGFloat kVerticalMargin = 12.f;
     CGContextSetStrokeColorWithColor(context, SeparatorColor.CGColor);
     CGContextSetLineDash(context, 0, lengths, 2);  //画虚线
     
+    CGContextBeginPath(context);
+    CGContextMoveToPoint(context, mPoint.x, mPoint.y);    //开始画线
+    CGContextAddLineToPoint(context, toPoint.x, toPoint.y);
+    
+    CGContextStrokePath(context);
+}
+
+- (void)drawLineInContext:(CGContextRef)context
+                movePoint:(CGPoint)mPoint toPoint:(CGPoint)toPoint {
+    CGContextSetLineWidth(context, SeparatorWidth);
+    CGContextSetStrokeColorWithColor(context, SeparatorColor.CGColor);
     CGContextBeginPath(context);
     CGContextMoveToPoint(context, mPoint.x, mPoint.y);    //开始画线
     CGContextAddLineToPoint(context, toPoint.x, toPoint.y);

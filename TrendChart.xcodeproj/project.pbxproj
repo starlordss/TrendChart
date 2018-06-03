@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		013C92A820B1E1BB00442EA8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 013C92A720B1E1BB00442EA8 /* AppDelegate.m */; };
 		013C92AB20B1E1BB00442EA8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 013C92AA20B1E1BB00442EA8 /* ViewController.m */; };
-		013C92AE20B1E1BB00442EA8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 013C92AC20B1E1BB00442EA8 /* Main.storyboard */; };
 		013C92B020B1E1BD00442EA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 013C92AF20B1E1BD00442EA8 /* Assets.xcassets */; };
 		013C92B320B1E1BD00442EA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 013C92B120B1E1BD00442EA8 /* LaunchScreen.storyboard */; };
 		013C92B620B1E1BD00442EA8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 013C92B520B1E1BD00442EA8 /* main.m */; };
@@ -41,7 +40,6 @@
 		013C92A720B1E1BB00442EA8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		013C92A920B1E1BB00442EA8 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		013C92AA20B1E1BB00442EA8 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		013C92AD20B1E1BB00442EA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		013C92AF20B1E1BD00442EA8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		013C92B220B1E1BD00442EA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		013C92B420B1E1BD00442EA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -131,7 +129,6 @@
 				013C92A720B1E1BB00442EA8 /* AppDelegate.m */,
 				013C92A920B1E1BB00442EA8 /* ViewController.h */,
 				013C92AA20B1E1BB00442EA8 /* ViewController.m */,
-				013C92AC20B1E1BB00442EA8 /* Main.storyboard */,
 				013C92AF20B1E1BD00442EA8 /* Assets.xcassets */,
 				013C92B120B1E1BD00442EA8 /* LaunchScreen.storyboard */,
 				013C92B420B1E1BD00442EA8 /* Info.plist */,
@@ -338,7 +335,6 @@
 			files = (
 				013C92B320B1E1BD00442EA8 /* LaunchScreen.storyboard in Resources */,
 				013C92B020B1E1BD00442EA8 /* Assets.xcassets in Resources */,
-				013C92AE20B1E1BB00442EA8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,14 +394,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		013C92AC20B1E1BB00442EA8 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				013C92AD20B1E1BB00442EA8 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		013C92B120B1E1BD00442EA8 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -535,7 +523,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 55M3M2Q47P;
 				INFOPLIST_FILE = TrendChart/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sidney.TrendChart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -550,7 +542,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 55M3M2Q47P;
 				INFOPLIST_FILE = TrendChart/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sidney.TrendChart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

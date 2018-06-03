@@ -21,8 +21,8 @@
 #define MaxYAxis       (self.topMargin + self.yAxisHeight)
 #define MaxBoundSize   (MAX(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds)))
 #define MinBoundSize   (MIN(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds)))
-#define SelfWidth      (_landscapeMode ? MaxBoundSize : MinBoundSize)
-#define SelfHeight     (_landscapeMode ? MinBoundSize : MaxBoundSize)
+#define SelfWidth      (self.landscapeMode ? MaxBoundSize : MinBoundSize)
+#define SelfHeight     (self.landscapeMode ? MinBoundSize : MaxBoundSize)
 
 static const NSUInteger kXAxisCutCount = 5; //!< X轴切割份数
 static const NSUInteger kYAxisCutCount = 5; //!< Y轴切割份数
@@ -92,7 +92,7 @@ static const CGFloat kAccessoryMargin = 6.f; //!< 两个副图的间距
 }
 
 - (void)setup {
-    self.backgroundColor = GlobalBGColor_Dark;
+    self.backgroundColor = GlobalBGColor_Blue;
     [self initDate];
     //添加手势
     [self addGestures];
@@ -122,7 +122,7 @@ static const CGFloat kAccessoryMargin = 6.f; //!< 两个副图的间距
 }
 
 - (void)initDate {
-    _landscapeMode = false;
+    _landscapeMode = NO;
     
     self.MAValues = @[ @7, @12, @26, @30 ];
     self.MAColors = @[ [UIColor lightGrayColor],
@@ -173,7 +173,7 @@ static const CGFloat kAccessoryMargin = 6.f; //!< 两个副图的间距
 
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
-    [self hideTipsWithAnimated:NO];
+    [self hideTipsWithAnimated:YES];
     [self removeCrossLine];
     
     if (!self.dataSource.count) {
@@ -278,8 +278,9 @@ static const CGFloat kAccessoryMargin = 6.f; //!< 两个副图的间距
     [self showTipsViewWithPoint:touchPoint];
 }
 
+// 拖动
 - (void)panEvent:(UIPanGestureRecognizer *)panGesture {
-    [self hideTipsWithAnimated:NO];
+    [self hideTipsWithAnimated:YES];
     CGPoint touchPoint = [panGesture translationInView:self];
     NSInteger offsetIndex = fabs(touchPoint.x / (_stockCtx.KLineWidth + _stockCtx.KLinePadding));
     if (self.dataSource.count == 0 || offsetIndex == 0) {
@@ -295,8 +296,9 @@ static const CGFloat kAccessoryMargin = 6.f; //!< 两个副图的间距
     [self update];
 }
 
+// 捏合
 - (void)pinchEvent:(UIPinchGestureRecognizer *)pinchEvent {
-    [self hideTipsWithAnimated:NO];
+    [self hideTipsWithAnimated:YES];
     if (!self.zoomEnable || self.dataSource.count == 0) {
         return;
     }
@@ -338,7 +340,7 @@ static const CGFloat kAccessoryMargin = 6.f; //!< 两个副图的间距
         return;
     }
     if (longGesture.state == UIGestureRecognizerStateEnded) {
-        [self hideTipsWithAnimated:NO];
+        [self hideTipsWithAnimated:YES];
     }
     else {
         CGPoint touchPoint = [longGesture locationInView:self];
@@ -388,7 +390,7 @@ static const CGFloat kAccessoryMargin = 6.f; //!< 两个副图的间距
     self.horizontalCrossLine.hidden = NO;
     self.horizontalCrossLine.us_top = point.y;
     
-    self.KLineTitleView.hidden = false;
+    self.KLineTitleView.hidden = NO;
     [self.KLineTitleView updateWithHigh:item.High open:item.Open close:item.Close low:item.Low];
     
     //时间，价额
@@ -429,11 +431,11 @@ static const CGFloat kAccessoryMargin = 6.f; //!< 两个副图的间距
 }
 
 - (void)hideTipsWithAnimated:(BOOL)animated {
-    self.horizontalCrossLine.hidden = YES;
-    self.verticalCrossLine.hidden = YES;
-    self.priceLabel.hidden = YES;
-    self.timeLabel.hidden = YES;
-    self.KLineTitleView.hidden = true;
+    self.horizontalCrossLine.hidden = animated;
+    self.verticalCrossLine.hidden = animated;
+    self.priceLabel.hidden = animated;
+    self.timeLabel.hidden = animated;
+    self.KLineTitleView.hidden = animated;
     [self.volView hideTitleView];
     [self.accessoryView hideTitleView];
 }
@@ -797,7 +799,7 @@ static const CGFloat kAccessoryMargin = 6.f; //!< 两个副图的间距
     if (!_volView) {
         _volView = [SZVolumeView new];
         _volView.backgroundColor  = [UIColor clearColor];
-        _volView.baseChartView = self;
+        _volView.trendChartView = self;
         [self addSubview:_volView];
     }
     return _volView;
@@ -807,7 +809,7 @@ static const CGFloat kAccessoryMargin = 6.f; //!< 两个副图的间距
     if (!_accessoryView) {
         _accessoryView = [SZAccessoryView new];
         _accessoryView.backgroundColor  = [UIColor clearColor];
-        _accessoryView.baseChartView = self;
+        _accessoryView.trendChartView = self;
         [self addSubview:_accessoryView];
     }
     return _accessoryView;
@@ -999,7 +1001,7 @@ static const CGFloat kAccessoryMargin = 6.f; //!< 两个副图的间距
 
 #pragma mark - <SZTrendChartSegmentViewDelegate>
 
-- (void)stockSegmentView:(SZTrendChartSegmentView *)segmentView didSelectModel:(SZSegmentSelectedModel *)model {
+- (void)segmentView:(SZTrendChartSegmentView *)segmentView didSelectModel:(SZSegmentSelectedModel *)model {
     
     _stockCtx.selectedModel = model;
     
@@ -1044,11 +1046,13 @@ static const CGFloat kAccessoryMargin = 6.f; //!< 两个副图的间距
             
         }
     }
+    
 }
 
-- (void)stockSegmentView:(SZTrendChartSegmentView *)segmentView showPopupView:(BOOL)showPopupView {
-    [self hideTipsWithAnimated:false];
+- (void)segmentView:(SZTrendChartSegmentView *)segmentView showPopupView:(BOOL)showPopupView {
+    [self hideTipsWithAnimated:NO];
 }
+
 
 - (void)dealloc {
     [self removeObserver];

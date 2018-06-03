@@ -26,7 +26,7 @@
 
 @property (nonatomic, strong) NSArray <SZKLineModel *> *data;
 
-@property (nonatomic, weak) SZTrendChartView *baseChartView;
+@property (nonatomic, weak) SZTrendChartView *trendChartView;
 
 - (void)update;
 

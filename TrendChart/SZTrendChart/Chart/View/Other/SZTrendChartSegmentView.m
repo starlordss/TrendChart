@@ -206,7 +206,7 @@ const CGFloat SZSegmentTotalHeight = 200.f;
 - (void)setupTargetBtn {
     _targetBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self addSubview:_targetBtn];
-    _targetBtn.backgroundColor = GlobalBGColor_Dark;
+    _targetBtn.backgroundColor = GlobalBGColor_Blue;
     [_targetBtn setTitle:@"指标" forState:UIControlStateNormal];
     _targetBtn.titleLabel.font = [UIFont systemFontOfSize:12];
     
@@ -258,14 +258,14 @@ const CGFloat SZSegmentTotalHeight = 200.f;
     
     [_popupPanelTop uninstall];
     [_popupPanel mas_updateConstraints:^(MASConstraintMaker *make) {
-        self->_popupPanelTop = make.top.mas_equalTo(topValue);
+        self.popupPanelTop = make.top.mas_equalTo(topValue);
     }];
     [UIView animateWithDuration:.2 delay:0 options:KeyboardAnimationCurve animations:^{
         [self layoutIfNeeded];
     } completion:nil];
     
-    if ([self.delegate respondsToSelector:@selector(stockSegmentView:showPopupView:)]) {
-        [self.delegate stockSegmentView:self showPopupView:_isOpening];
+    if ([self.delegate respondsToSelector:@selector(segmentView:showPopupView:)]) {
+        [self.delegate segmentView:self showPopupView:_isOpening];
     }
 }
 
@@ -292,8 +292,8 @@ const CGFloat SZSegmentTotalHeight = 200.f;
     else if ([btn.currentTitle isEqualToString:@"关闭"]) {
         model.accessoryChartType = SZAccessoryChartTypeClose;
     }
-    if ([self.delegate respondsToSelector:@selector(stockSegmentView:didSelectModel:)]) {
-        [self.delegate stockSegmentView:self didSelectModel:model];
+    if ([self.delegate respondsToSelector:@selector(segmentView:didSelectModel:)]) {
+        [self.delegate segmentView:self didSelectModel:model];
     }
     [self hidePopupView];
 }
@@ -315,8 +315,8 @@ const CGFloat SZSegmentTotalHeight = 200.f;
     else if ([btn.currentTitle isEqualToString:@"关闭"]) {
         model.mainChartType = SZMainChartTypeClose;
     }
-    if ([self.delegate respondsToSelector:@selector(stockSegmentView:didSelectModel:)]) {
-        [self.delegate stockSegmentView:self didSelectModel:model];
+    if ([self.delegate respondsToSelector:@selector(segmentView:didSelectModel:)]) {
+        [self.delegate segmentView:self didSelectModel:model];
     }
     [self hidePopupView];
 }
@@ -372,8 +372,8 @@ const CGFloat SZSegmentTotalHeight = 200.f;
         default:
             break;
     }
-    if ([self.delegate respondsToSelector:@selector(stockSegmentView:didSelectModel:)]) {
-        [self.delegate stockSegmentView:self didSelectModel:model];
+    if ([self.delegate respondsToSelector:@selector(segmentView:didSelectModel:)]) {
+        [self.delegate segmentView:self didSelectModel:model];
     }
 }
 

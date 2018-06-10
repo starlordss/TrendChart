@@ -26,7 +26,7 @@
 
 static const NSUInteger kXAxisCutCount = 5; //!< X轴切割份数
 static const NSUInteger kYAxisCutCount = 5; //!< Y轴切割份数
-static const CGFloat kBarChartHeightRatio = .182f; //!< 副图的高度占比
+static const CGFloat kBarChartHeightRatio = .100f; //!< 副图的高度占比
 static const CGFloat kChartVerticalMargin = 30.f;  //!< 图表上下各留的间隙
 static const CGFloat kTimeAxisHeight = 14.f;       //!< 时间轴的高度
 static const CGFloat kAccessoryMargin = 6.f; //!< 两个副图的间距
@@ -118,7 +118,7 @@ static const CGFloat kAccessoryMargin = 6.f; //!< 两个副图的间距
     _segmentView = [SZTrendChartSegmentView segmentView];
     [self addSubview:_segmentView];
     _segmentView.delegate = self;
-    _segmentView.frame = CGRectMake(0, SelfHeight - SZSegmentCellHeight, SelfWidth, SZSegmentTotalHeight);
+    _segmentView.frame = CGRectMake(0, 0, SelfWidth, SZSegmentTotalHeight);
 }
 
 - (void)initDate {

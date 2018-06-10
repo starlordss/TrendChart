@@ -57,13 +57,14 @@ static NSString *cellID = @"SZStockSegmentViewCell";
 @interface SZTrendChartSegmentView () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
-@property (nonatomic, strong) UIButton *targetBtn;
+// 指标按钮
+@property (nonatomic, strong) UIButton *indexBtn;
 @property (nonatomic, strong) UIView *popupPanel;
-@property (nonatomic, copy) NSArray *dataSource;
+@property (nonatomic, copy)   NSArray *dataSource;
 @property (nonatomic, strong) SZSegmentSelectedModel *selectedModel;
 @property (nonatomic, strong) UIButton *selectedMainChartBtn;
 @property (nonatomic, strong) UIButton *selectedAccessoryChartBtn;
-@property (nonatomic, strong) MASConstraint *popupPanelTop;
+@property (nonatomic, strong) MASConstraint *popupPanelHeight;
 
 @end
 
@@ -104,7 +105,7 @@ const CGFloat SZSegmentTotalHeight = 200.f;
     _selectedModel = [SZSegmentSelectedModel new];
     _selectedModel.mainChartType = SZMainChartTypeMA;
     _selectedModel.accessoryChartType = SZAccessoryChartTypeMACD;
-    _selectedModel.targetTimeType = SZTargetTimeTypeMin_30;
+    _selectedModel.targetTimeType = SZTargetTimeTypeMin_60;
     
     _dataSource = @[ @"分时", @"5分", @"30分", @"60分", @"日线" ];
     
@@ -120,8 +121,8 @@ const CGFloat SZSegmentTotalHeight = 200.f;
     
     [_popupPanel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(0);
-        make.height.mas_equalTo(kPopupViewHeight);
-        self.popupPanelTop = make.top.mas_equalTo(SZSegmentTotalHeight);
+        self.popupPanelHeight = make.height.mas_equalTo(SZSegmentCellHeight);
+        make.top.mas_equalTo(SZSegmentTotalHeight);
     }];
     
     CGFloat btnWidth = 60.f;
@@ -204,14 +205,14 @@ const CGFloat SZSegmentTotalHeight = 200.f;
 }
 
 - (void)setupTargetBtn {
-    _targetBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self addSubview:_targetBtn];
-    _targetBtn.backgroundColor = GlobalBGColor_Blue;
-    [_targetBtn setTitle:@"指标" forState:UIControlStateNormal];
-    _targetBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+    _indexBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self addSubview:_indexBtn];
+    _indexBtn.backgroundColor = GlobalBGColor_Blue;
+    [_indexBtn setTitle:@"指标" forState:UIControlStateNormal];
+    _indexBtn.titleLabel.font = [UIFont systemFontOfSize:12];
     
-    [_targetBtn addTarget:self action:@selector(targetBtnClcik) forControlEvents:UIControlEventTouchUpInside];
-    [_targetBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_indexBtn addTarget:self action:@selector(targetBtnClcik) forControlEvents:UIControlEventTouchUpInside];
+    [_indexBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(kTargetBtnWidth, SZSegmentCellHeight));
         make.left.mas_equalTo(0);
         make.bottom.mas_equalTo(self.us_height);
@@ -233,6 +234,7 @@ const CGFloat SZSegmentTotalHeight = 200.f;
     _collectionView.dataSource = self;
     _collectionView.alwaysBounceHorizontal = true;
     _collectionView.showsHorizontalScrollIndicator = false;
+    _collectionView.bounces = NO;
     
     [_collectionView registerClass:[SZSegmentViewCell class] forCellWithReuseIdentifier:cellID];
     [_collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -248,17 +250,17 @@ const CGFloat SZSegmentTotalHeight = 200.f;
 - (void)targetBtnClcik {
     _isOpening = !_isOpening;
     
-    CGFloat topValue = 0;
+    CGFloat segmentHeight = 0;
     if (_isOpening) {
-        topValue = SZSegmentTotalHeight - kPopupViewHeight - SZSegmentCellHeight;
+        segmentHeight = SZSegmentTotalHeight;
     }
     else {
-        topValue = SZSegmentTotalHeight;
+        segmentHeight = SZSegmentCellHeight;
     }
     
-    [_popupPanelTop uninstall];
+    [_popupPanelHeight uninstall];
     [_popupPanel mas_updateConstraints:^(MASConstraintMaker *make) {
-        self.popupPanelTop = make.top.mas_equalTo(topValue);
+        self.popupPanelHeight = make.height.mas_equalTo(segmentHeight);
     }];
     [UIView animateWithDuration:.2 delay:0 options:KeyboardAnimationCurve animations:^{
         [self layoutIfNeeded];

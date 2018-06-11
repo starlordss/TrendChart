@@ -57,9 +57,10 @@ static NSString *cellID = @"SZStockSegmentViewCell";
 @interface SZTrendChartSegmentView () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
-@property (nonatomic, strong) UIButton *targetBtn;
+// 指标按钮
+@property (nonatomic, strong) UIButton *indexBtn;
 @property (nonatomic, strong) UIView *popupPanel;
-@property (nonatomic, copy) NSArray *dataSource;
+@property (nonatomic, copy)   NSArray *dataSource;
 @property (nonatomic, strong) SZSegmentSelectedModel *selectedModel;
 @property (nonatomic, strong) UIButton *selectedMainChartBtn;
 @property (nonatomic, strong) UIButton *selectedAccessoryChartBtn;
@@ -103,7 +104,7 @@ const CGFloat SZSegmentTotalHeight = 200.f;
     _selectedModel = [SZSegmentSelectedModel new];
     _selectedModel.mainChartType = SZMainChartTypeMA;
     _selectedModel.accessoryChartType = SZAccessoryChartTypeMACD;
-    _selectedModel.targetTimeType = SZTargetTimeTypeMin_30;
+    _selectedModel.targetTimeType = SZTargetTimeTypeMin_60;
     
     _dataSource = @[ @"分时", @"5分", @"30分", @"60分", @"日线" ];
     
@@ -197,14 +198,14 @@ const CGFloat SZSegmentTotalHeight = 200.f;
 }
 
 - (void)setupTargetBtn {
-    _targetBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self addSubview:_targetBtn];
-    _targetBtn.backgroundColor = HexRGB(0x081825);
-    [_targetBtn setTitle:@"指标" forState:UIControlStateNormal];
-    _targetBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+    _indexBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self addSubview:_indexBtn];
+    _indexBtn.backgroundColor = GlobalBGColor_Blue;
+    [_indexBtn setTitle:@"指标" forState:UIControlStateNormal];
+    _indexBtn.titleLabel.font = [UIFont systemFontOfSize:12];
     
-    [_targetBtn addTarget:self action:@selector(targetBtnClcik) forControlEvents:UIControlEventTouchUpInside];
-    [_targetBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_indexBtn addTarget:self action:@selector(targetBtnClcik) forControlEvents:UIControlEventTouchUpInside];
+    [_indexBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(kTargetBtnWidth, SZSegmentCellHeight));
         make.trailing.mas_equalTo(self);
         make.bottom.mas_equalTo(self.us_height);
@@ -226,6 +227,7 @@ const CGFloat SZSegmentTotalHeight = 200.f;
     _collectionView.dataSource = self;
     _collectionView.alwaysBounceHorizontal = true;
     _collectionView.showsHorizontalScrollIndicator = false;
+    _collectionView.bounces = NO;
     
     [_collectionView registerClass:[SZSegmentViewCell class] forCellWithReuseIdentifier:cellID];
     [_collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -240,8 +242,9 @@ const CGFloat SZSegmentTotalHeight = 200.f;
 
 - (void)targetBtnClcik {
     _isOpening = !_isOpening;
-    _targetBtn.backgroundColor = _isOpening? HexRGB(0x081825):HexRGB(0x111E2F);
+    _indexBtn.backgroundColor = _isOpening? HexRGB(0x081825):HexRGB(0x111E2F);
     _popupPanel.hidden = !_isOpening;
+    
     if ([self.delegate respondsToSelector:@selector(segmentView:showPopupView:)]) {
         [self.delegate segmentView:self showPopupView:_isOpening];
     }

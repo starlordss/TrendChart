@@ -115,6 +115,7 @@ static const CGFloat kAccessoryMargin = 6.f; //!< 两个副图的间距
     _segmentView = [SZTrendChartSegmentView segmentView];
     [self addSubview:_segmentView];
     _segmentView.delegate = self;
+
     [_segmentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, SZSegmentCellHeight));
         // FIX ME

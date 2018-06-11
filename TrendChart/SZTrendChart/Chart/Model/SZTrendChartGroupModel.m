@@ -14,7 +14,6 @@
 + (instancetype)groupModelWithDataSource:(NSArray *)dataSource {
     NSAssert([dataSource isKindOfClass:[NSArray class]], @"arr不是一个数组");
 
-    
     SZTrendChartGroupModel *groupModel = [SZTrendChartGroupModel new];
     NSMutableArray *mutableArr = @[].mutableCopy;
     __block SZKLineModel *preModel = [[SZKLineModel alloc]init];

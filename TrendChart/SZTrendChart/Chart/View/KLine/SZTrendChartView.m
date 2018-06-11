@@ -26,7 +26,7 @@
 
 static const NSUInteger kXAxisCutCount = 5; //!< X轴切割份数
 static const NSUInteger kYAxisCutCount = 5; //!< Y轴切割份数
-static const CGFloat kBarChartHeightRatio = .182f; //!< 副图的高度占比
+static const CGFloat kBarChartHeightRatio = 0.1; //!< 副图的高度占比
 static const CGFloat kChartVerticalMargin = 30.f;  //!< 图表上下各留的间隙
 static const CGFloat kTimeAxisHeight = 14.f;       //!< 时间轴的高度
 static const CGFloat kAccessoryMargin = 6.f; //!< 两个副图的间距
@@ -65,7 +65,6 @@ static const CGFloat kAccessoryMargin = 6.f; //!< 两个副图的间距
 @property (nonatomic, assign) NSInteger lastDrawNum; //!< 缩放手势 记录上次的绘制个数
 @property (nonatomic, strong) SZTrendChartTitleView *KLineTitleView;
 @property (nonatomic, strong) SZTrendChartSegmentView *segmentView;
-@property (nonatomic, assign) CGFloat bottomSegmentViewHeight;
 @property (nonatomic, assign) SZMainChartType mainChartType;
 @property (nonatomic, strong) SZTrendChartTopView *topView;
 @property (nonatomic, strong) UIButton *rotateBtn;
@@ -98,9 +97,7 @@ static const CGFloat kAccessoryMargin = 6.f; //!< 两个副图的间距
     [self addGestures];
     [self registerObserver];
     [self setupHeader];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self setupBottomSegmentView];
-    });
+    [self setupSegmentView];
 }
 
 - (void)setupHeader {
@@ -114,11 +111,16 @@ static const CGFloat kAccessoryMargin = 6.f; //!< 两个副图的间距
     }];
 }
 
-- (void)setupBottomSegmentView {
+- (void)setupSegmentView {
     _segmentView = [SZTrendChartSegmentView segmentView];
     [self addSubview:_segmentView];
     _segmentView.delegate = self;
-    _segmentView.frame = CGRectMake(0, SelfHeight - SZSegmentCellHeight, SelfWidth, SZSegmentTotalHeight);
+    [_segmentView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, SZSegmentCellHeight));
+        // FIX ME
+        make.top.mas_equalTo(self.topView.mas_bottom);
+        make.leading.equalTo(self);
+    }];
 }
 
 - (void)initDate {
@@ -136,10 +138,9 @@ static const CGFloat kAccessoryMargin = 6.f; //!< 两个副图的间距
     self.autoFit = YES;
     self.lastPanScale = 1.0;
     self.xAxisMapper = [NSMutableDictionary dictionary];
-    self.topMargin = SZTrendChartTopViewHeight + _navBarHeight;
+    // FIX ME
+    self.topMargin = SZTrendChartTopViewHeight + _navBarHeight + SZSegmentCellHeight; 
     self.KLineTitleView.hidden = true;
-    
-    _bottomSegmentViewHeight = SZSegmentCellHeight;
     _mainChartType = SZMainChartTypeMA;
 }
 
@@ -183,7 +184,7 @@ static const CGFloat kAccessoryMargin = 6.f; //!< 两个副图的间距
     self.xAxisWidth = rect.size.width - _stockCtx.rightMargin - _stockCtx.leftMargin;
     
     CGFloat accessoryViewTotalHeight = rect.size.height * kBarChartHeightRatio * 2;
-    self.yAxisHeight = rect.size.height - self.topMargin - kTimeAxisHeight - accessoryViewTotalHeight - kAccessoryMargin - _bottomSegmentViewHeight;
+    self.yAxisHeight = rect.size.height - self.topMargin - kTimeAxisHeight - accessoryViewTotalHeight - kAccessoryMargin - SZSegmentCellHeight;
     
     // 纵轴的分割线
     [self drawYAxisInRect:rect];
@@ -458,7 +459,7 @@ static const CGFloat kAccessoryMargin = 6.f; //!< 两个副图的间距
                             toPoint:CGPointMake(rect.size.width  - _stockCtx.rightMargin - 0.8, self.topMargin + avgHeight*i)];
     }
     
-    //这必须把dash给初始化一次，不然会影响其他线条的绘制
+    // 这必须把dash给初始化一次，不然会影响其他线条的绘制
     CGContextSetLineDash(context, 0, 0, 0);
 }
 
@@ -497,11 +498,11 @@ static const CGFloat kAccessoryMargin = 6.f; //!< 两个副图的间距
     CGFloat lengths[] = {5,5};
     CGContextSetStrokeColorWithColor(context, SeparatorColor.CGColor);
     CGContextSetLineDash(context, 0, lengths, 2);  //画虚线
-    
+
     CGContextBeginPath(context);
     CGContextMoveToPoint(context, mPoint.x, mPoint.y);    //开始画线
     CGContextAddLineToPoint(context, toPoint.x, toPoint.y);
-    
+
     CGContextStrokePath(context);
 }
 
@@ -517,7 +518,7 @@ static const CGFloat kAccessoryMargin = 6.f; //!< 两个副图的间距
         if (xAxisValue > _stockCtx.leftMargin + self.xAxisWidth) {
             break;
         }
-        [self drawDashLineInContext:context movePoint:CGPointMake(xAxisValue, self.topMargin + 1.25) toPoint:CGPointMake(xAxisValue, SelfHeight - _bottomSegmentViewHeight + 5)];
+        [self drawDashLineInContext:context movePoint:CGPointMake(xAxisValue, self.topMargin + 1.25) toPoint:CGPointMake(xAxisValue, SelfHeight - SZSegmentCellHeight + 5)];
         //x轴坐标
         NSInteger timeIndex = i * lineCountPerGrid + self.startDrawIndex;
         if (timeIndex > self.dataSource.count - 1) {
@@ -964,9 +965,9 @@ static const CGFloat kAccessoryMargin = 6.f; //!< 两个副图的间距
     }
     else {
         angle = 0;
-        bounds = CGRectMake(0, 0, CGRectGetWidth(self.superview.bounds), CGRectGetHeight(self.superview.bounds));
+        bounds = CGRectMake(0, 0, CGRectGetWidth(self.superview.bounds), 500);
         center = CGPointMake(CGRectGetMidX(self.superview.bounds), CGRectGetMidY(self.superview.bounds));
-        self.topMargin = SZTrendChartTopViewHeight + _navBarHeight;
+//        self.topMargin = SZTrendChartTopViewHeight + _navBarHeight;
         [_topView show];
         navAlpha = 1.f;
         [[UIApplication sharedApplication] setStatusBarHidden:false withAnimation:UIStatusBarAnimationSlide];
@@ -1050,7 +1051,7 @@ static const CGFloat kAccessoryMargin = 6.f; //!< 两个副图的间距
 }
 
 - (void)segmentView:(SZTrendChartSegmentView *)segmentView showPopupView:(BOOL)showPopupView {
-    [self hideTipsWithAnimated:NO];
+    [self hideTipsWithAnimated:YES];
 }
 
 

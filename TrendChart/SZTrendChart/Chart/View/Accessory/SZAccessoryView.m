@@ -281,7 +281,7 @@ static const CGFloat kVerticalMargin = 12.f;
 }
 
 - (void)drawChart {
-    [self showYAxisTitleWithTitles:@[[NSString stringWithFormat:@"%.f", self.highestValue], [NSString stringWithFormat:@"%.f", self.highestValue/2.0], @"万"]];
+    [self showYAxisTitleWithTitles:@[[NSString stringWithFormat:@"%.2f", self.highestValue], [NSString stringWithFormat:@"%.2f", self.highestValue/2.0], @"万"]];
     [self drawAccessoryView];
 }
 
@@ -330,38 +330,38 @@ static const CGFloat kVerticalMargin = 12.f;
     CGRect strokeRect = CGRectMake(_stockCtx.leftMargin, AxisLineWidth/2.0, rect.size.width - _stockCtx.leftMargin - _stockCtx.rightMargin, rect.size.height);
     CGContextStrokeRect(context, strokeRect);
     
-    [self drawDashLineInContext:context movePoint:CGPointMake(_stockCtx.leftMargin + 1.25,
-                                                              rect.size.height/2.0)
-                        toPoint:CGPointMake(rect.size.width  - _stockCtx.rightMargin - 0.8,
-                                            rect.size.height/2.0)];
+//    [self drawDashLineInContext:context movePoint:CGPointMake(_stockCtx.leftMargin + 1.25,
+//                                                              rect.size.height/2.0)
+//                        toPoint:CGPointMake(rect.size.width  - _stockCtx.rightMargin - 0.8,
+//                                            rect.size.height/2.0)];
     
     //这必须把dash给初始化一次，不然会影响其他线条的绘制
-    CGContextSetLineDash(context, 0, 0, 0);
-    
-    for (int i = 0; i < yAxisTitles.count; i ++) {
-        NSAttributedString *attString = [SZTrendChartUtil attributeText:yAxisTitles[i] textColor:YAxisTitleColor font:YAxisTitleFont];
-        CGSize size = [attString.string stringSizeWithFont:YAxisTitleFont];
-        
-        [attString drawInRect:CGRectMake(rect.size.width - _stockCtx.rightMargin + 2.f,
-                                         strokeRect.origin.y + i*strokeRect.size.height/2.0 - size.height/2.0*i - (i==0?2 : 0),
-                                         size.width,
-                                         size.height)];
-    }
+//    CGContextSetLineDash(context, 0, 0, 0);
+//
+//    for (int i = 0; i < yAxisTitles.count; i ++) {
+//        NSAttributedString *attString = [SZTrendChartUtil attributeText:yAxisTitles[i] textColor:YAxisTitleColor font:YAxisTitleFont];
+//        CGSize size = [attString.string stringSizeWithFont:YAxisTitleFont];
+//
+//        [attString drawInRect:CGRectMake(rect.size.width - _stockCtx.rightMargin + 2.f,
+//                                         strokeRect.origin.y + i*strokeRect.size.height/2.0 - size.height/2.0*i - (i==0?2 : 0),
+//                                         size.width,
+//                                         size.height)];
+//    }
 }
 
-- (void)drawDashLineInContext:(CGContextRef)context
-                    movePoint:(CGPoint)mPoint toPoint:(CGPoint)toPoint {
-    CGContextSetLineWidth(context, SeparatorWidth);
-    CGFloat lengths[] = {5,5};
-    CGContextSetStrokeColorWithColor(context, SeparatorColor.CGColor);
-    CGContextSetLineDash(context, 0, lengths, 2);  //画虚线
-    
-    CGContextBeginPath(context);
-    CGContextMoveToPoint(context, mPoint.x, mPoint.y);    //开始画线
-    CGContextAddLineToPoint(context, toPoint.x, toPoint.y);
-    
-    CGContextStrokePath(context);
-}
+//- (void)drawDashLineInContext:(CGContextRef)context
+//                    movePoint:(CGPoint)mPoint toPoint:(CGPoint)toPoint {
+//    CGContextSetLineWidth(context, SeparatorWidth);
+//    CGFloat lengths[] = {5,5};
+//    CGContextSetStrokeColorWithColor(context, SeparatorColor.CGColor);
+//    CGContextSetLineDash(context, 0, lengths, 2);  //画虚线
+//    
+//    CGContextBeginPath(context);
+//    CGContextMoveToPoint(context, mPoint.x, mPoint.y);    //开始画线
+//    CGContextAddLineToPoint(context, toPoint.x, toPoint.y);
+//    
+//    CGContextStrokePath(context);
+//}
 
 
 

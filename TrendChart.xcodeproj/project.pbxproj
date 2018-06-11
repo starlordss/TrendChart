@@ -25,12 +25,12 @@
 		01E52B0D20BF11C30021965F /* SZTrendChartSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E52B0C20BF11C30021965F /* SZTrendChartSegmentView.m */; };
 		01E52B1020C03D4F0021965F /* SZTrendChartContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E52B0F20C03D4F0021965F /* SZTrendChartContext.m */; };
 		01E52B1820C048CF0021965F /* UIView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E52B1720C048CF0021965F /* UIView+Addition.m */; };
-		01E52B1E20C04C370021965F /* SZTrendChartTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E52B1D20C04C370021965F /* SZTrendChartTopView.m */; };
 		01E52B2120C2FAA30021965F /* SZAssistantBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E52B2020C2FAA30021965F /* SZAssistantBaseView.m */; };
 		01E52B2420C303940021965F /* SZVolumeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E52B2320C303940021965F /* SZVolumeView.m */; };
 		01E52B2720C308C80021965F /* UIBezierPath+curved.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E52B2620C308C70021965F /* UIBezierPath+curved.m */; };
 		01E52B2A20C308FF0021965F /* NSString+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E52B2820C308FF0021965F /* NSString+Common.m */; };
 		01E52B2D20C30C9C0021965F /* SZAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E52B2C20C30C9C0021965F /* SZAccessoryView.m */; };
+		01E52B3020CD7A010021965F /* SZTrendChartTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E52B2F20CD7A000021965F /* SZTrendChartTopView.m */; };
 		5006F5286F6AD075EE7B42F9 /* libPods-TrendChart.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 31D5C10ABD3AACF6283E46F6 /* libPods-TrendChart.a */; };
 /* End PBXBuildFile section */
 
@@ -74,8 +74,6 @@
 		01E52B1420C03E440021965F /* SZTrendChartHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTrendChartHeader.h; sourceTree = "<group>"; };
 		01E52B1620C048CF0021965F /* UIView+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Addition.h"; sourceTree = "<group>"; };
 		01E52B1720C048CF0021965F /* UIView+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Addition.m"; sourceTree = "<group>"; };
-		01E52B1C20C04C370021965F /* SZTrendChartTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTrendChartTopView.h; sourceTree = "<group>"; };
-		01E52B1D20C04C370021965F /* SZTrendChartTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTrendChartTopView.m; sourceTree = "<group>"; };
 		01E52B1F20C2FAA30021965F /* SZAssistantBaseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZAssistantBaseView.h; sourceTree = "<group>"; };
 		01E52B2020C2FAA30021965F /* SZAssistantBaseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZAssistantBaseView.m; sourceTree = "<group>"; };
 		01E52B2220C303940021965F /* SZVolumeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZVolumeView.h; sourceTree = "<group>"; };
@@ -86,6 +84,8 @@
 		01E52B2920C308FF0021965F /* NSString+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Common.h"; sourceTree = "<group>"; };
 		01E52B2B20C30C9C0021965F /* SZAccessoryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZAccessoryView.h; sourceTree = "<group>"; };
 		01E52B2C20C30C9C0021965F /* SZAccessoryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZAccessoryView.m; sourceTree = "<group>"; };
+		01E52B2E20CD7A000021965F /* SZTrendChartTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZTrendChartTopView.h; sourceTree = "<group>"; };
+		01E52B2F20CD7A000021965F /* SZTrendChartTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZTrendChartTopView.m; sourceTree = "<group>"; };
 		31D5C10ABD3AACF6283E46F6 /* libPods-TrendChart.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TrendChart.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		66ACF33727A2141166561E9B /* Pods-TrendChart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrendChart.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrendChart/Pods-TrendChart.release.xcconfig"; sourceTree = "<group>"; };
 		B78AA107431491CAB4EC7ACA /* Pods-TrendChart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrendChart.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrendChart/Pods-TrendChart.debug.xcconfig"; sourceTree = "<group>"; };
@@ -235,12 +235,12 @@
 		01E52B0120BF0CEF0021965F /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				01E52B2E20CD7A000021965F /* SZTrendChartTopView.h */,
+				01E52B2F20CD7A000021965F /* SZTrendChartTopView.m */,
 				01E52B0520BF0DD60021965F /* SZTrendChartTitleView.h */,
 				01E52B0620BF0DD60021965F /* SZTrendChartTitleView.m */,
 				01E52B0B20BF11C30021965F /* SZTrendChartSegmentView.h */,
 				01E52B0C20BF11C30021965F /* SZTrendChartSegmentView.m */,
-				01E52B1C20C04C370021965F /* SZTrendChartTopView.h */,
-				01E52B1D20C04C370021965F /* SZTrendChartTopView.m */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -372,12 +372,12 @@
 				01E52B2120C2FAA30021965F /* SZAssistantBaseView.m in Sources */,
 				01E52B2720C308C80021965F /* UIBezierPath+curved.m in Sources */,
 				01E52AF820BF02F10021965F /* SZKLineModel.m in Sources */,
+				01E52B3020CD7A010021965F /* SZTrendChartTopView.m in Sources */,
 				01E52B0A20BF11360021965F /* NSString+SZTrendChart.m in Sources */,
 				01E52AE820BEFCBE0021965F /* SZTrendChartGlobalVariable.m in Sources */,
 				013C92A820B1E1BB00442EA8 /* AppDelegate.m in Sources */,
 				01E52AF520BF02C50021965F /* SZTrendChartGroupModel.m in Sources */,
 				01E52B0720BF0DD60021965F /* SZTrendChartTitleView.m in Sources */,
-				01E52B1E20C04C370021965F /* SZTrendChartTopView.m in Sources */,
 				01E52AEC20BEFF130021965F /* SZTrendChartUtil.m in Sources */,
 				01E52B0420BF0D6D0021965F /* SZTrendChartView.m in Sources */,
 				01E52B2D20C30C9C0021965F /* SZAccessoryView.m in Sources */,

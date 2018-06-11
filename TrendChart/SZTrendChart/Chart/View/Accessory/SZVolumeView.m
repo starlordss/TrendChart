@@ -191,59 +191,59 @@ static const CGFloat kVerticalMargin = 12.f;
 }
 
 - (void)showYAxisTitleWithTitles:(NSArray *)yAxis {
-    CGContextRef context = UIGraphicsGetCurrentContext();
+//    CGContextRef context = UIGraphicsGetCurrentContext();
     
-    CGRect rect = self.bounds;
-    //交易量边框
-    CGContextSetLineWidth(context, AxisLineWidth);
-    CGContextSetStrokeColorWithColor(context, AxisLineColor.CGColor);
-    CGRect strokeRect = CGRectMake(_stockCtx.leftMargin,
-                                   AxisLineWidth/2.0,
-                                   rect.size.width - _stockCtx.leftMargin - _stockCtx.rightMargin,
-                                   rect.size.height);
-    CGContextStrokeRect(context, strokeRect);
+//    CGRect rect = self.bounds;
+//    //交易量边框
+//    CGContextSetLineWidth(context, AxisLineWidth);
+//    CGContextSetStrokeColorWithColor(context, AxisLineColor.CGColor);
+//    CGRect strokeRect = CGRectMake(_stockCtx.leftMargin,
+//                                   AxisLineWidth/2.0,
+//                                   rect.size.width - _stockCtx.leftMargin - _stockCtx.rightMargin,
+//                                   rect.size.height);
+//    CGContextStrokeRect(context, strokeRect);
     
-    [self drawLineInContext:context movePoint:CGPointMake(_stockCtx.leftMargin + 1.25, rect.size.height/2.0)
-                        toPoint:CGPointMake(rect.size.width  - _stockCtx.rightMargin - 0.8, rect.size.height/2.0)];
+//    [self drawLineInContext:context movePoint:CGPointMake(_stockCtx.leftMargin + 1.25, rect.size.height/2.0)
+//                        toPoint:CGPointMake(rect.size.width  - _stockCtx.rightMargin - 0.8, rect.size.height/2.0)];
     
-    CGContextSetLineDash(context, 0, 0, 0);
+//    CGContextSetLineDash(context, 0, 0, 0);
     
-    for (int i = 0; i < yAxis.count; i ++) {
-        NSAttributedString *attString = [SZTrendChartUtil attributeText:yAxis[i] textColor:YAxisTitleColor font:YAxisTitleFont];
-        CGSize size = [attString.string stringSizeWithFont:YAxisTitleFont];
-        
-        [attString drawInRect:CGRectMake(rect.size.width - _stockCtx.rightMargin + 2.f,
-                                         strokeRect.origin.y + i*strokeRect.size.height/2.0 - size.height/2.0*i - (i==0?2 : 0),
-                                         size.width,
-                                         size.height)];
-    }
+//    for (int i = 0; i < yAxis.count; i ++) {
+//        NSAttributedString *attString = [SZTrendChartUtil attributeText:yAxis[i] textColor:YAxisTitleColor font:YAxisTitleFont];
+//        CGSize size = [attString.string stringSizeWithFont:YAxisTitleFont];
+//
+//        [attString drawInRect:CGRectMake(rect.size.width - _stockCtx.rightMargin + 2.f,
+//                                         strokeRect.origin.y + i*strokeRect.size.height/2.0 - size.height/2.0*i - (i==0?2 : 0),
+//                                         size.width,
+//                                         size.height)];
+//    }
     
 }
 
-- (void)drawDashLineInContext:(CGContextRef)context
-                    movePoint:(CGPoint)mPoint toPoint:(CGPoint)toPoint {
-    CGContextSetLineWidth(context, SeparatorWidth);
-    CGFloat lengths[] = {5,5};
-    CGContextSetStrokeColorWithColor(context, SeparatorColor.CGColor);
-    CGContextSetLineDash(context, 0, lengths, 2);  //画虚线
-    
-    CGContextBeginPath(context);
-    CGContextMoveToPoint(context, mPoint.x, mPoint.y);    //开始画线
-    CGContextAddLineToPoint(context, toPoint.x, toPoint.y);
-    
-    CGContextStrokePath(context);
-}
+//- (void)drawDashLineInContext:(CGContextRef)context
+//                    movePoint:(CGPoint)mPoint toPoint:(CGPoint)toPoint {
+//    CGContextSetLineWidth(context, SeparatorWidth);
+//    CGFloat lengths[] = {5,5};
+//    CGContextSetStrokeColorWithColor(context, SeparatorColor.CGColor);
+//    CGContextSetLineDash(context, 0, lengths, 2);  //画虚线
+//
+//    CGContextBeginPath(context);
+//    CGContextMoveToPoint(context, mPoint.x, mPoint.y);    //开始画线
+//    CGContextAddLineToPoint(context, toPoint.x, toPoint.y);
+//
+//    CGContextStrokePath(context);
+//}
 
-- (void)drawLineInContext:(CGContextRef)context
-                movePoint:(CGPoint)mPoint toPoint:(CGPoint)toPoint {
-    CGContextSetLineWidth(context, SeparatorWidth);
-    CGContextSetStrokeColorWithColor(context, SeparatorColor.CGColor);
-    CGContextBeginPath(context);
-    CGContextMoveToPoint(context, mPoint.x, mPoint.y);    //开始画线
-    CGContextAddLineToPoint(context, toPoint.x, toPoint.y);
-    
-    CGContextStrokePath(context);
-}
+//- (void)drawLineInContext:(CGContextRef)context
+//                movePoint:(CGPoint)mPoint toPoint:(CGPoint)toPoint {
+//    CGContextSetLineWidth(context, SeparatorWidth);
+//    CGContextSetStrokeColorWithColor(context, SeparatorColor.CGColor);
+//    CGContextBeginPath(context);
+//    CGContextMoveToPoint(context, mPoint.x, mPoint.y);    //开始画线
+//    CGContextAddLineToPoint(context, toPoint.x, toPoint.y);
+//
+//    CGContextStrokePath(context);
+//}
 
 
 

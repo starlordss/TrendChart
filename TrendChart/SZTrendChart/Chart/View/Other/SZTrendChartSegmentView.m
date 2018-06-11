@@ -12,8 +12,8 @@
 #import "UIView+Addition.h"
 
 
-#define TitleColor_Nor  HexRGB(0x434b56)
-#define TitleColor_HL   HexRGB(0x2187c9)
+#define TitleColor_Nor  HexRGB(0x67798E)
+#define TitleColor_HL   HexRGB(0x4481C4)
 #define BGColor         HexRGB(0x20232b)
 
 static NSString *cellID = @"SZStockSegmentViewCell";
@@ -63,12 +63,11 @@ static NSString *cellID = @"SZStockSegmentViewCell";
 @property (nonatomic, strong) SZSegmentSelectedModel *selectedModel;
 @property (nonatomic, strong) UIButton *selectedMainChartBtn;
 @property (nonatomic, strong) UIButton *selectedAccessoryChartBtn;
-@property (nonatomic, strong) MASConstraint *popupPanelTop;
 
 @end
 
 static const CGFloat kTargetBtnWidth = 60.f;
-static const CGFloat kPopupViewHeight = 150.f;
+static const CGFloat kPopupViewHeight = 122.f;
 
 const CGFloat SZSegmentCellHeight = 35.f;
 const CGFloat SZSegmentTotalHeight = 200.f;
@@ -115,57 +114,50 @@ const CGFloat SZSegmentTotalHeight = 200.f;
 
 - (void)setupPopupPanel {
     _popupPanel = [UIView new];
-    _popupPanel.backgroundColor = HexRGBA(0x20232b, .85);
+    _popupPanel.backgroundColor = HexRGB(0x111E2F);
     [self insertSubview:_popupPanel atIndex:0];
     
     [_popupPanel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.mas_equalTo(0);
+        make.leading.trailing.mas_equalTo(0);
         make.height.mas_equalTo(kPopupViewHeight);
-        self.popupPanelTop = make.top.mas_equalTo(SZSegmentTotalHeight);
+        make.top.equalTo(self.collectionView.mas_bottom);
     }];
     
     CGFloat btnWidth = 60.f;
+    CGFloat itemWidth = (self.us_width - kTargetBtnWidth) / _dataSource.count;
     
     UILabel *topTitleLabel = [self generateTitleLabel:@"主图"];
     [_popupPanel addSubview:topTitleLabel];
     [topTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(100, 36));
-        make.top.mas_equalTo(6);
-        make.left.mas_equalTo(15);
+        make.size.mas_equalTo(CGSizeMake(itemWidth, 56));
+        make.top.mas_equalTo(0);
+        make.left.mas_equalTo(0);
     }];
     
     NSArray *topBtnTitles = @[ @"MA", @"BOLL", @"关闭" ];
-    for (int i = 0; i < topBtnTitles.count; i ++) {
+    for (int i = 0; i < topBtnTitles.count; i++) {
         UIButton *btn = [self generateBtn:topBtnTitles[i]];
         [btn addTarget:self action:@selector(mainChartBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         [_popupPanel addSubview:btn];
         
         [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(btnWidth, 35));
-            make.left.mas_equalTo(i * btnWidth);
-            make.top.mas_equalTo(topTitleLabel.mas_bottom);
+            make.size.mas_equalTo(CGSizeMake(btnWidth, 56));
+            make.left.mas_equalTo(i * btnWidth + 100);
+            make.top.mas_equalTo(topTitleLabel);
         }];
         
         if (i == 0) {
             [self mainChartBtnClick:btn];
         }
     }
-    
-    UIView *line = [UIView new];
-    [_popupPanel addSubview:line];
-    [line mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.mas_equalTo(0);
-        make.centerY.mas_equalTo(kPopupViewHeight * .5);
-        make.height.mas_equalTo(.5);
-    }];
-    line.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:.4];
+
     
     UILabel *bottomTitleLabel = [self generateTitleLabel:@"副图"];
     [_popupPanel addSubview:bottomTitleLabel];
     [bottomTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(kPopupViewHeight * .5);
-        make.size.mas_equalTo(CGSizeMake(100, 36));
-        make.left.mas_equalTo(15);
+        make.top.equalTo(topTitleLabel.mas_bottom);
+        make.size.mas_equalTo(CGSizeMake(itemWidth, 56));
+        make.left.mas_equalTo(0);
     }];
     
     NSArray *bottomBtnTitles = @[ @"MACD", @"KDJ", @"RSI", @"WR", @"关闭" ];
@@ -175,9 +167,9 @@ const CGFloat SZSegmentTotalHeight = 200.f;
         [_popupPanel addSubview:btn];
         
         [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(btnWidth, 35));
-            make.left.mas_equalTo(i * btnWidth);
-            make.top.mas_equalTo(bottomTitleLabel.mas_bottom);
+            make.size.mas_equalTo(CGSizeMake(btnWidth, 56));
+            make.left.mas_equalTo(i * btnWidth + 100);
+            make.top.mas_equalTo(bottomTitleLabel);
         }];
         
         if (i == 0) {
@@ -189,7 +181,7 @@ const CGFloat SZSegmentTotalHeight = 200.f;
 - (UIButton *)generateBtn:(NSString *)title {
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn setTitle:title forState:UIControlStateNormal];
-    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [btn setTitleColor:HexRGB(0x67798E) forState:UIControlStateNormal];
     btn.titleLabel.font = [UIFont systemFontOfSize:12];
     [btn setTitleColor:TitleColor_HL forState:UIControlStateSelected];
     return btn;
@@ -199,21 +191,22 @@ const CGFloat SZSegmentTotalHeight = 200.f;
     UILabel *label = [UILabel new];
     label.text = title;
     label.font = [UIFont systemFontOfSize:12];
-    label.textColor = [UIColor whiteColor];
+    label.textColor = HexRGB(0x5C88B8);
+    label.textAlignment = NSTextAlignmentCenter;
     return label;
 }
 
 - (void)setupTargetBtn {
     _targetBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self addSubview:_targetBtn];
-    _targetBtn.backgroundColor = GlobalBGColor_Blue;
+    _targetBtn.backgroundColor = HexRGB(0x081825);
     [_targetBtn setTitle:@"指标" forState:UIControlStateNormal];
     _targetBtn.titleLabel.font = [UIFont systemFontOfSize:12];
     
     [_targetBtn addTarget:self action:@selector(targetBtnClcik) forControlEvents:UIControlEventTouchUpInside];
     [_targetBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(kTargetBtnWidth, SZSegmentCellHeight));
-        make.left.mas_equalTo(0);
+        make.trailing.mas_equalTo(self);
         make.bottom.mas_equalTo(self.us_height);
     }];
 }
@@ -227,7 +220,7 @@ const CGFloat SZSegmentTotalHeight = 200.f;
     _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
     
     [self addSubview:_collectionView];
-    _collectionView.backgroundColor = BGColor;
+    _collectionView.backgroundColor = HexRGB(0x111E2F);
     
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
@@ -236,9 +229,9 @@ const CGFloat SZSegmentTotalHeight = 200.f;
     
     [_collectionView registerClass:[SZSegmentViewCell class] forCellWithReuseIdentifier:cellID];
     [_collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(kTargetBtnWidth);
+        make.leading.equalTo(self);
         make.bottom.mas_equalTo(self.us_height);
-        make.right.mas_equalTo(0);
+        make.trailing.offset(-kTargetBtnWidth);
         make.height.mas_equalTo(SZSegmentCellHeight);
     }];
 }
@@ -247,23 +240,8 @@ const CGFloat SZSegmentTotalHeight = 200.f;
 
 - (void)targetBtnClcik {
     _isOpening = !_isOpening;
-    
-    CGFloat topValue = 0;
-    if (_isOpening) {
-        topValue = SZSegmentTotalHeight - kPopupViewHeight - SZSegmentCellHeight;
-    }
-    else {
-        topValue = SZSegmentTotalHeight;
-    }
-    
-    [_popupPanelTop uninstall];
-    [_popupPanel mas_updateConstraints:^(MASConstraintMaker *make) {
-        self.popupPanelTop = make.top.mas_equalTo(topValue);
-    }];
-    [UIView animateWithDuration:.2 delay:0 options:KeyboardAnimationCurve animations:^{
-        [self layoutIfNeeded];
-    } completion:nil];
-    
+    _targetBtn.backgroundColor = _isOpening? HexRGB(0x081825):HexRGB(0x111E2F);
+    _popupPanel.hidden = !_isOpening;
     if ([self.delegate respondsToSelector:@selector(segmentView:showPopupView:)]) {
         [self.delegate segmentView:self showPopupView:_isOpening];
     }
@@ -341,6 +319,7 @@ const CGFloat SZSegmentTotalHeight = 200.f;
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     CGSize size = CGSizeZero;
     CGFloat itemWidth = (self.us_width - kTargetBtnWidth) / _dataSource.count;
+    
     size = CGSizeMake(itemWidth, SZSegmentCellHeight);
     
     return size;

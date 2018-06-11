@@ -53,7 +53,7 @@
 }
 
 - (void)setupKLineView {
-    _trendChartView = [[SZTrendChartView alloc] initWithFrame:CGRectMake(0, 0, self.view.us_width, self.view.us_height)];
+    _trendChartView = [[SZTrendChartView alloc] initWithFrame:CGRectMake(0, 0, self.view.us_width, 600)];
     [self.view addSubview:self.trendChartView];
     _trendChartView.autoFit = true;
     _trendChartView.delegate = self;
